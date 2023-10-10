@@ -41,11 +41,11 @@ class _MyAppState extends State<MyApp> {
                       },
                     ),
                   )
-                : Container(
+                : const SizedBox(
                     height: 0,
                     width: 0,
                   ),
-            Container(
+            SizedBox(
               height: 200,
               child: AudioRecorder(
                 onStop: (path) {
