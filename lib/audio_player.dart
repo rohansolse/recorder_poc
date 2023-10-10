@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:audioplayers/audioplayers.dart' as ap;
 import 'package:audioplayers/audioplayers.dart';
+import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -36,7 +37,8 @@ class AudioPlayerState extends State<AudioPlayer> {
 
   @override
   void initState() {
-    _playerStateChangedSubscription = _audioPlayer.onPlayerComplete.listen((state) async {
+    _playerStateChangedSubscription =
+        _audioPlayer.onPlayerComplete.listen((state) async {
       await stop();
       setState(() {});
     });
@@ -67,59 +69,78 @@ class AudioPlayerState extends State<AudioPlayer> {
   Widget build(BuildContext context) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        return Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text('${_duration ?? 0.0}'),
-            Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                _buildControl(),
-                _buildSlider(constraints.maxWidth),
-                IconButton(
-                  icon: const Icon(Icons.delete, color: Color(0xFF73748D), size: _deleteBtnSize),
-                  onPressed: () {
-                    if (_audioPlayer.state == ap.PlayerState.playing) {
-                      stop().then((value) => widget.onDelete());
-                    } else {
-                      widget.onDelete();
-                    }
-                  },
-                ),
-              ],
-            ),
-          ],
+        return Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              _duration != null
+                  ? Text('${_duration.toString().substring(0, 7)}',
+                      style:
+                          TextStyle(fontSize: 16, fontWeight: FontWeight.w700))
+                  : Container(height: 0, width: 0),
+              _buildSlider(constraints.maxWidth),
+              SizedBox(height: 10),
+              _buildControl(),
+              // Row(
+              //   mainAxisSize: MainAxisSize.max,
+              //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //   children: <Widget>[
+              //     _buildControl(),
+              //     _buildSlider(constraints.maxWidth),
+              //     IconButton(
+              //       icon: const Icon(Icons.delete, color: Color(0xFF73748D), size: _deleteBtnSize),
+              //       onPressed: () {
+              //         if (_audioPlayer.state == ap.PlayerState.playing) {
+              //           stop().then((value) => widget.onDelete());
+              //         } else {
+              //           widget.onDelete();
+              //         }
+              //       },
+              //     ),
+              //   ],
+              // ),
+            ],
+          ),
         );
       },
     );
   }
 
   Widget _buildControl() {
-    Icon icon;
-    Color color;
+    Widget icon;
+    late Color color = Color.fromRGBO(205, 60, 50, 1);
 
     if (_audioPlayer.state == ap.PlayerState.playing) {
-      icon = const Icon(Icons.pause, color: Colors.red, size: 30);
-      color = Colors.red.withOpacity(0.1);
+      icon = Image.asset(
+        "assets/vector.png",
+        height: 24,
+        width: 24,
+      );
     } else {
-      final theme = Theme.of(context);
-      icon = Icon(Icons.play_arrow, color: theme.primaryColor, size: 30);
-      color = theme.primaryColor.withOpacity(0.1);
+      icon = Icon(Icons.play_arrow, color: Colors.white, size: 30);
     }
 
-    return ClipOval(
-      child: Material(
-        color: color,
-        child: InkWell(
-          child: SizedBox(width: _controlSize, height: _controlSize, child: icon),
-          onTap: () {
-            if (_audioPlayer.state == ap.PlayerState.playing) {
-              pause();
-            } else {
-              play();
-            }
-          },
+    return AvatarGlow(
+      endRadius: 80,
+      glowColor: color,
+      animate: _audioPlayer.state == ap.PlayerState.playing,
+      duration: Duration(milliseconds: 1000),
+      repeatPauseDuration: Duration(milliseconds: 200),
+      child: ClipOval(
+        child: Material(
+          color: color,
+          child: InkWell(
+            child: SizedBox(
+                width: _controlSize, height: _controlSize, child: icon),
+            onTap: () {
+              if (_audioPlayer.state == ap.PlayerState.playing) {
+                pause();
+              } else {
+                play();
+              }
+            },
+          ),
         ),
       ),
     );
@@ -135,21 +156,24 @@ class AudioPlayerState extends State<AudioPlayer> {
       canSetValue &= position.inMilliseconds < duration.inMilliseconds;
     }
 
-    double width = widgetWidth - _controlSize - _deleteBtnSize;
+    // double width = widgetWidth - _controlSize - _deleteBtnSize;
+    double width = widgetWidth;
     width -= _deleteBtnSize;
 
     return SizedBox(
       width: width,
       child: Slider(
-        activeColor: Theme.of(context).primaryColor,
-        inactiveColor: Theme.of(context).colorScheme.secondary,
+        activeColor: Color.fromRGBO(0, 152, 116, 1),
+        inactiveColor: Color.fromRGBO(201, 201, 201, 1),
         onChanged: (v) {
           if (duration != null) {
             final position = v * duration.inMilliseconds;
             _audioPlayer.seek(Duration(milliseconds: position.round()));
           }
         },
-        value: canSetValue && duration != null && position != null ? position.inMilliseconds / duration.inMilliseconds : 0.0,
+        value: canSetValue && duration != null && position != null
+            ? position.inMilliseconds / duration.inMilliseconds
+            : 0.0,
       ),
     );
   }

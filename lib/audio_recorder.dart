@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:record/record.dart';
 import 'dart:async';
 
+import 'package:recorder_poc/constants.dart';
+
 class AudioRecorder extends StatefulWidget {
   final void Function(String path) onStop;
 
@@ -27,7 +29,9 @@ class _AudioRecorderState extends State<AudioRecorder> {
       setState(() => _recordState = recordState);
     });
 
-    _amplitudeSub = _audioRecorder.onAmplitudeChanged(const Duration(milliseconds: 300)).listen((amp) => setState(() => _amplitude = amp));
+    _amplitudeSub = _audioRecorder
+        .onAmplitudeChanged(const Duration(milliseconds: 300))
+        .listen((amp) => setState(() => _amplitude = amp));
 
     super.initState();
   }
@@ -81,33 +85,33 @@ class _AudioRecorderState extends State<AudioRecorder> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              _buildText(),
-              SizedBox(height: 40),
-              _buildRecordStopControl(),
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.center,
-              //   children: <Widget>[
-              //     _buildRecordStopControl(),
-              //     const SizedBox(width: 20),
-              //     _buildPauseResumeControl(),
-              //     const SizedBox(width: 20),
-              //     _buildText(),
-              //   ],
-              // ),
-              // if (_amplitude != null) ...[
-              //   const SizedBox(height: 40),
-              //   Text('Current: ${_amplitude?.current ?? 0.0}'),
-              //   Text('Max: ${_amplitude?.max ?? 0.0}'),
-              // ],
-            ],
-          ),
+    return LayoutBuilder(builder: (context, constraints) {
+      return Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            _buildText(),
+            SizedBox(height: 40),
+            _buildRecordStopControl(),
+            // Row(
+            //   mainAxisAlignment: MainAxisAlignment.center,
+            //   children: <Widget>[
+            //     _buildRecordStopControl(),
+            //     const SizedBox(width: 20),
+            //     _buildPauseResumeControl(),
+            //     const SizedBox(width: 20),
+            //     _buildText(),
+            //   ],
+            // ),
+            // if (_amplitude != null) ...[
+            //   const SizedBox(height: 40),
+            //   Text('Current: ${_amplitude?.current ?? 0.0}'),
+            //   Text('Max: ${_amplitude?.max ?? 0.0}'),
+            // ],
+          ],
         ),
       );
+    });
   }
 
   @override
@@ -120,23 +124,28 @@ class _AudioRecorderState extends State<AudioRecorder> {
   }
 
   Widget _buildRecordStopControl() {
-    late Icon icon;
-    late Color color;
+    late Widget icon;
+    late Color color = Color.fromRGBO(205, 60, 50, 1);
 
     if (_recordState != RecordState.stop) {
-      icon = const Icon(Icons.stop, color: Colors.white, size: 30);
-      color = Colors.red;
+      icon = Image.asset(
+        "assets/vector.png",
+        height: 24,
+        width: 24,
+      );
     } else {
-      final theme = Theme.of(context);
-      icon = Icon(Icons.mic, color: Colors.white, size: 30);
-      color = Colors.red;
+      icon = Image.asset(
+        "assets/mic_icon.png",
+        height: 24,
+        width: 24,
+      );
     }
 
     return ClipOval(
       child: Material(
         color: color,
         child: InkWell(
-          child: SizedBox(width: 56, height: 56, child: icon),
+          child: SizedBox(width: 57.7, height: 57.7, child: icon),
           onTap: () {
             (_recordState != RecordState.stop) ? _stop() : _start();
           },
@@ -181,7 +190,8 @@ class _AudioRecorderState extends State<AudioRecorder> {
     }
 
     // return const Text("Waiting to record");
-    return const Text("Start Recording", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600));
+    return Text(StringConstants.startRecording,
+        style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700));
   }
 
   Widget _buildTimer() {
