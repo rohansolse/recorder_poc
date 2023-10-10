@@ -20,6 +20,7 @@ class _AudioRecorderState extends State<AudioRecorder> {
   RecordState _recordState = RecordState.stop;
   StreamSubscription<Amplitude>? _amplitudeSub;
   Amplitude? _amplitude;
+  late bool isRecordingStarted = false;
 
   @override
   void initState() {
@@ -27,7 +28,13 @@ class _AudioRecorderState extends State<AudioRecorder> {
       setState(() => _recordState = recordState);
     });
 
-    _amplitudeSub = _audioRecorder.onAmplitudeChanged(const Duration(milliseconds: 300)).listen((amp) => setState(() => _amplitude = amp));
+    _amplitudeSub = _audioRecorder
+        .onAmplitudeChanged(
+          const Duration(milliseconds: 300),
+        )
+        .listen(
+          (amp) => setState(() => _amplitude = amp),
+        );
 
     super.initState();
   }
@@ -35,6 +42,9 @@ class _AudioRecorderState extends State<AudioRecorder> {
   Future<void> _start() async {
     try {
       if (await _audioRecorder.hasPermission()) {
+        setState(() {
+          isRecordingStarted = true;
+        });
         // We don't do anything with this but printing
         final isSupported = await _audioRecorder.isEncoderSupported(
           AudioEncoder.aacLc,
@@ -59,6 +69,9 @@ class _AudioRecorderState extends State<AudioRecorder> {
   }
 
   Future<void> _stop() async {
+    setState(() {
+      isRecordingStarted = false;
+    });
     _timer?.cancel();
     _recordDuration = 0;
 
@@ -82,32 +95,68 @@ class _AudioRecorderState extends State<AudioRecorder> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              _buildText(),
-              SizedBox(height: 40),
-              _buildRecordStopControl(),
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.center,
-              //   children: <Widget>[
-              //     _buildRecordStopControl(),
-              //     const SizedBox(width: 20),
-              //     _buildPauseResumeControl(),
-              //     const SizedBox(width: 20),
-              //     _buildText(),
-              //   ],
-              // ),
-              // if (_amplitude != null) ...[
-              //   const SizedBox(height: 40),
-              //   Text('Current: ${_amplitude?.current ?? 0.0}'),
-              //   Text('Max: ${_amplitude?.max ?? 0.0}'),
-              // ],
-            ],
-          ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const SizedBox(height: 200),
+            _buildText(),
+            const SizedBox(height: 40),
+            _buildRecordStopControl(),
+            const SizedBox(height: 200),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton.icon(
+                  icon: Icon(
+                    Icons.delete_outline_outlined,
+                    color: isRecordingStarted ? const Color.fromRGBO(0, 152, 116, 1) : const Color.fromRGBO(158, 158, 158, 1),
+                  ),
+                  label: Text(
+                    'Cancel Recording',
+                    style: isRecordingStarted
+                        ? const TextStyle(color: Color.fromRGBO(0, 152, 116, 1))
+                        : const TextStyle(color: Color.fromRGBO(158, 158, 158, 1)),
+                  ),
+                  onPressed: isRecordingStarted ? () {} : null,
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.white,
+                    padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50.0),
+                      side: isRecordingStarted
+                          ? const BorderSide(color: Color.fromRGBO(0, 152, 116, 1), width: 2)
+                          : const BorderSide(color: Color.fromRGBO(158, 158, 158, 1), width: 2),
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 20),
+                ElevatedButton.icon(
+                  icon: const Icon(Icons.my_library_books_rounded),
+                  label: const Text('Submit Recording'),
+                  onPressed: isRecordingStarted ? () {} : null,
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color.fromRGBO(0, 152, 116, 1),
+                    padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(50.0),
+                      side: isRecordingStarted
+                          ? const BorderSide(color: Color.fromRGBO(0, 152, 116, 1), width: 2)
+                          : const BorderSide(color: Color.fromRGBO(158, 158, 158, 1), width: 2),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            // if (_amplitude != null) ...[
+            //   const SizedBox(height: 40),
+            //   Text('Current: ${_amplitude?.current ?? 0.0}'),
+            //   Text('Max: ${_amplitude?.max ?? 0.0}'),
+            // ],
+          ],
         ),
-      );
+      ),
+    );
   }
 
   @override
@@ -127,8 +176,8 @@ class _AudioRecorderState extends State<AudioRecorder> {
       icon = const Icon(Icons.stop, color: Colors.white, size: 30);
       color = Colors.red;
     } else {
-      final theme = Theme.of(context);
-      icon = Icon(Icons.mic, color: Colors.white, size: 30);
+      // final theme = Theme.of(context);
+      icon = const Icon(Icons.mic, color: Colors.white, size: 30);
       color = Colors.red;
     }
 
