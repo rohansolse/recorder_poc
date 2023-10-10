@@ -70,6 +70,7 @@ class AudioPlayerState extends State<AudioPlayer> {
         return Column(
           mainAxisSize: MainAxisSize.min,
           children: [
+            Text('${_duration ?? 0.0}'),
             Row(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -88,7 +89,6 @@ class AudioPlayerState extends State<AudioPlayer> {
                 ),
               ],
             ),
-            Text('${_duration ?? 0.0}'),
           ],
         );
       },
