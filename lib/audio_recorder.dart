@@ -1,8 +1,7 @@
+import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:record/record.dart';
-import 'dart:async';
-
 import 'package:recorder_poc/constants.dart';
 
 class AudioRecorder extends StatefulWidget {
@@ -101,11 +100,11 @@ class _AudioRecorderState extends State<AudioRecorder> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const SizedBox(height: 200),
+            const SizedBox(height: 100),
             _buildText(),
             const SizedBox(height: 40),
             _buildRecordStopControl(),
-            const SizedBox(height: 200),
+            const SizedBox(height: 100),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -136,7 +135,100 @@ class _AudioRecorderState extends State<AudioRecorder> {
                 ElevatedButton.icon(
                   icon: const Icon(Icons.my_library_books_rounded),
                   label: const Text(RecorderConstants.submitRecoring),
-                  onPressed: isRecordingStarted ? () {} : null,
+                  onPressed: !isRecordingStarted
+                      ? () {
+                          showDialog(
+                            context: context,
+                            builder: (context) {
+                              return Dialog(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(40),
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: ListView(
+                                    shrinkWrap: true,
+                                    children: [
+                                      const SizedBox(height: 30),
+                                      const Icon(Icons.mic, size: 60),
+                                      const SizedBox(height: 30),
+                                      const Center(
+                                        child: Text(
+                                          RecorderConstants.submitRecoringWithQuestion,
+                                          style: TextStyle(
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ),
+                                      const SizedBox(height: 40),
+                                      const Center(
+                                        child: Text(RecorderConstants.areYouDone),
+                                      ),
+                                      const SizedBox(height: 10),
+                                      Center(
+                                        child: RichText(
+                                          text: TextSpan(
+                                            text: RecorderConstants.thisWillGenerate,
+                                            style: DefaultTextStyle.of(context).style,
+                                            children: const <TextSpan>[
+                                              TextSpan(
+                                                text: RecorderConstants.visitSummaryDocument,
+                                                style: TextStyle(fontWeight: FontWeight.bold),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                        // 'This will generate a Visit Summary Document'
+                                      ),
+                                      const SizedBox(height: 40),
+                                      Column(
+                                        children: [
+                                          SizedBox(
+                                            width: 150,
+                                            child: ElevatedButton(
+                                              onPressed: () {},
+                                              style: ElevatedButton.styleFrom(
+                                                backgroundColor: RecorderConstants.primaryColor,
+                                                padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
+                                                shape: RoundedRectangleBorder(
+                                                  borderRadius: BorderRadius.circular(50.0),
+                                                  side: const BorderSide(color: RecorderConstants.primaryColor, width: 2),
+                                                ),
+                                              ),
+                                              child: const Text(RecorderConstants.submitRecoring),
+                                            ),
+                                          ),
+                                          const SizedBox(height: 5),
+                                          SizedBox(
+                                            width: 150,
+                                            child: ElevatedButton(
+                                              onPressed: () {},
+                                              style: ElevatedButton.styleFrom(
+                                                backgroundColor: Colors.white,
+                                                padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
+                                                shape: RoundedRectangleBorder(
+                                                  borderRadius: BorderRadius.circular(50.0),
+                                                  side: const BorderSide(color: RecorderConstants.primaryColor, width: 2),
+                                                ),
+                                              ),
+                                              child: const Text(
+                                                RecorderConstants.cancel,
+                                                style: TextStyle(color: RecorderConstants.primaryColor),
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      const SizedBox(height: 20),
+                                    ],
+                                  ),
+                                ),
+                              );
+                            },
+                          );
+                        }
+                      : null,
                   style: ElevatedButton.styleFrom(
                     backgroundColor: RecorderConstants.primaryColor,
                     padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),

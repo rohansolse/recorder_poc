@@ -5,4 +5,9 @@ class RecorderConstants {
   static const scondaryColor = Color.fromRGBO(158, 158, 158, 1);
   static const cancelRecording = 'Cancel Recording';
   static const submitRecoring = 'Submit Recording';
+  static const submitRecoringWithQuestion = 'Submit Recording ?';
+  static const cancel = 'Cancel';
+  static const visitSummaryDocument = 'Visit Summary Document';
+  static const thisWillGenerate = 'This will generate a ';
+  static const areYouDone = 'Are you done with recording the conversation?';
 }

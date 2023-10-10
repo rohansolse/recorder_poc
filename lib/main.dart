@@ -46,7 +46,7 @@ class _MyAppState extends State<MyApp> {
                       width: 0,
                     ),
               Container(
-                height: 700,
+                height: 400,
                 child: AudioRecorder(
                   onStop: (path) {
                     if (kDebugMode) print('Recorded file path: $path');
