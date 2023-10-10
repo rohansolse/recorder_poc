@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:record/record.dart';
 import 'dart:async';
 
+import 'package:recorder_poc/constants.dart';
+
 class AudioRecorder extends StatefulWidget {
   final void Function(String path) onStop;
 
@@ -110,13 +112,13 @@ class _AudioRecorderState extends State<AudioRecorder> {
                 ElevatedButton.icon(
                   icon: Icon(
                     Icons.delete_outline_outlined,
-                    color: isRecordingStarted ? const Color.fromRGBO(0, 152, 116, 1) : const Color.fromRGBO(158, 158, 158, 1),
+                    color: isRecordingStarted ? RecorderConstants.primaryColor : RecorderConstants.scondaryColor,
                   ),
                   label: Text(
-                    'Cancel Recording',
+                    RecorderConstants.cancelRecording,
                     style: isRecordingStarted
-                        ? const TextStyle(color: Color.fromRGBO(0, 152, 116, 1))
-                        : const TextStyle(color: Color.fromRGBO(158, 158, 158, 1)),
+                        ? const TextStyle(color: RecorderConstants.primaryColor)
+                        : const TextStyle(color: RecorderConstants.scondaryColor),
                   ),
                   onPressed: isRecordingStarted ? () {} : null,
                   style: ElevatedButton.styleFrom(
@@ -125,24 +127,24 @@ class _AudioRecorderState extends State<AudioRecorder> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(50.0),
                       side: isRecordingStarted
-                          ? const BorderSide(color: Color.fromRGBO(0, 152, 116, 1), width: 2)
-                          : const BorderSide(color: Color.fromRGBO(158, 158, 158, 1), width: 2),
+                          ? const BorderSide(color: RecorderConstants.primaryColor, width: 2)
+                          : const BorderSide(color: RecorderConstants.scondaryColor, width: 2),
                     ),
                   ),
                 ),
                 const SizedBox(width: 20),
                 ElevatedButton.icon(
                   icon: const Icon(Icons.my_library_books_rounded),
-                  label: const Text('Submit Recording'),
+                  label: const Text(RecorderConstants.submitRecoring),
                   onPressed: isRecordingStarted ? () {} : null,
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color.fromRGBO(0, 152, 116, 1),
+                    backgroundColor: RecorderConstants.primaryColor,
                     padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(50.0),
                       side: isRecordingStarted
-                          ? const BorderSide(color: Color.fromRGBO(0, 152, 116, 1), width: 2)
-                          : const BorderSide(color: Color.fromRGBO(158, 158, 158, 1), width: 2),
+                          ? const BorderSide(color: RecorderConstants.primaryColor, width: 2)
+                          : const BorderSide(color: RecorderConstants.scondaryColor, width: 2),
                     ),
                   ),
                 ),
