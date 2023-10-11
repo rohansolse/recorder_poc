@@ -7,7 +7,7 @@ import 'package:recorder_poc/constants.dart';
 void main() => runApp(const MyApp());
 
 class MyApp extends StatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -30,11 +30,14 @@ class _MyAppState extends State<MyApp> {
       home: Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.white,
-          title: Text(StringConstants.appointmentsDetails,
-              style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w700,
-                  color: Color.fromRGBO(0, 152, 116, 1))),
+          title: Text(
+            RecorderConstants.appointmentsDetails,
+            style: const TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.w700,
+              color: Color.fromRGBO(0, 152, 116, 1),
+            ),
+          ),
           centerTitle: false,
           elevation: 0,
         ),
@@ -43,12 +46,22 @@ class _MyAppState extends State<MyApp> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(StringConstants.voiceRecorder,
-                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.w700)),
-              SizedBox(height: 8),
-              Text(StringConstants.voiceRecorderSubtitle,
-                  style: TextStyle(fontSize: 13, fontWeight: FontWeight.w400)),
-              SizedBox(height: 20),
+              Text(
+                RecorderConstants.voiceRecorder,
+                style: const TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+              const SizedBox(height: 8),
+              Text(
+                RecorderConstants.voiceRecorderSubtitle,
+                style: const TextStyle(
+                  fontSize: 13,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+              const SizedBox(height: 20),
               Container(
                 height: MediaQuery.of(context).size.height * 0.6,
                 child: Column(
@@ -64,19 +77,18 @@ class _MyAppState extends State<MyApp> {
                               },
                             ),
                           )
-                        : Container(
+                        : const SizedBox(
                             height: 0,
                             width: 0,
                           ),
                     showPlayer
-                        ? Container(
+                        ? const SizedBox(
                             height: 0,
                             width: 0,
                           )
                         : AudioRecorder(
                             onStop: (path) {
-                              if (kDebugMode)
-                                print('Recorded file path: $path');
+                              if (kDebugMode) print('Recorded file path: $path');
                               setState(() {
                                 audioPath = path;
                                 showPlayer = true;
