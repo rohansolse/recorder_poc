@@ -142,7 +142,7 @@ class _AudioRecorderState extends State<AudioRecorder> {
                             builder: (context) {
                               return Dialog(
                                 shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(40),
+                                  borderRadius: BorderRadius.circular(20),
                                 ),
                                 child: Padding(
                                   padding: const EdgeInsets.all(8.0),
@@ -157,13 +157,19 @@ class _AudioRecorderState extends State<AudioRecorder> {
                                           RecorderConstants.submitRecordingWithQuestion,
                                           style: TextStyle(
                                             fontSize: 20,
-                                            fontWeight: FontWeight.bold,
+                                            fontWeight: FontWeight.w700,
+                                            fontFamily: RecorderConstants.fontFamilyArchivo,
                                           ),
                                         ),
                                       ),
                                       const SizedBox(height: 30),
                                       const Center(
-                                        child: Text(RecorderConstants.areYouDone),
+                                        child: Text(
+                                          RecorderConstants.areYouDone,
+                                          style: TextStyle(
+                                            fontFamily: RecorderConstants.fontFamilyRoboto,
+                                          ),
+                                        ),
                                       ),
                                       const SizedBox(height: 10),
                                       Center(
@@ -174,7 +180,10 @@ class _AudioRecorderState extends State<AudioRecorder> {
                                             children: const <TextSpan>[
                                               TextSpan(
                                                 text: RecorderConstants.visitSummaryDocument,
-                                                style: TextStyle(fontWeight: FontWeight.bold),
+                                                style: TextStyle(
+                                                  fontWeight: FontWeight.w700,
+                                                  fontFamily: RecorderConstants.fontFamilyRoboto,
+                                                ),
                                               ),
                                             ],
                                           ),
