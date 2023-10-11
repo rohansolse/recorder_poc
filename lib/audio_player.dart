@@ -37,8 +37,7 @@ class AudioPlayerState extends State<AudioPlayer> {
 
   @override
   void initState() {
-    _playerStateChangedSubscription =
-        _audioPlayer.onPlayerComplete.listen((state) async {
+    _playerStateChangedSubscription = _audioPlayer.onPlayerComplete.listen((state) async {
       await stop();
       setState(() {});
     });
@@ -75,12 +74,13 @@ class AudioPlayerState extends State<AudioPlayer> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               _duration != null
-                  ? Text('${_duration.toString().substring(0, 7)}',
-                      style:
-                          TextStyle(fontSize: 16, fontWeight: FontWeight.w700))
-                  : Container(height: 0, width: 0),
+                  ? Text(
+                      _duration.toString().substring(0, 7),
+                      style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
+                    )
+                  : const SizedBox(height: 0, width: 0),
               _buildSlider(constraints.maxWidth),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               _buildControl(),
               // Row(
               //   mainAxisSize: MainAxisSize.max,
@@ -109,7 +109,7 @@ class AudioPlayerState extends State<AudioPlayer> {
 
   Widget _buildControl() {
     Widget icon;
-    late Color color = Color.fromRGBO(205, 60, 50, 1);
+    late Color color = const Color.fromRGBO(205, 60, 50, 1);
 
     if (_audioPlayer.state == ap.PlayerState.playing) {
       icon = Image.asset(
@@ -118,21 +118,20 @@ class AudioPlayerState extends State<AudioPlayer> {
         width: 24,
       );
     } else {
-      icon = Icon(Icons.play_arrow, color: Colors.white, size: 30);
+      icon = const Icon(Icons.play_arrow, color: Colors.white, size: 30);
     }
 
     return AvatarGlow(
       endRadius: 80,
       glowColor: color,
       animate: _audioPlayer.state == ap.PlayerState.playing,
-      duration: Duration(milliseconds: 1000),
-      repeatPauseDuration: Duration(milliseconds: 200),
+      duration: const Duration(milliseconds: 1000),
+      repeatPauseDuration: const Duration(milliseconds: 200),
       child: ClipOval(
         child: Material(
           color: color,
           child: InkWell(
-            child: SizedBox(
-                width: _controlSize, height: _controlSize, child: icon),
+            child: SizedBox(width: _controlSize, height: _controlSize, child: icon),
             onTap: () {
               if (_audioPlayer.state == ap.PlayerState.playing) {
                 pause();
@@ -163,17 +162,15 @@ class AudioPlayerState extends State<AudioPlayer> {
     return SizedBox(
       width: width,
       child: Slider(
-        activeColor: Color.fromRGBO(0, 152, 116, 1),
-        inactiveColor: Color.fromRGBO(201, 201, 201, 1),
+        activeColor: const Color.fromRGBO(0, 102, 78, 1),
+        inactiveColor: const Color.fromRGBO(201, 201, 201, 1),
         onChanged: (v) {
           if (duration != null) {
             final position = v * duration.inMilliseconds;
             _audioPlayer.seek(Duration(milliseconds: position.round()));
           }
         },
-        value: canSetValue && duration != null && position != null
-            ? position.inMilliseconds / duration.inMilliseconds
-            : 0.0,
+        value: canSetValue && duration != null && position != null ? position.inMilliseconds / duration.inMilliseconds : 0.0,
       ),
     );
   }

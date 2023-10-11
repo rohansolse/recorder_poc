@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:record/record.dart';
 import 'package:recorder_poc/constants.dart';
 
-import 'package:recorder_poc/constants.dart';
-
 class AudioRecorder extends StatefulWidget {
   final void Function(String path) onStop;
 
@@ -102,163 +100,163 @@ class _AudioRecorderState extends State<AudioRecorder> {
               const SizedBox(height: 40),
               _buildRecordStopControl(),
               const SizedBox(height: 100),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ElevatedButton.icon(
-                    icon: Icon(
-                      Icons.delete_outline_outlined,
-                      color: isRecordingStarted ? RecorderConstants.primaryColor : RecorderConstants.scondaryColor,
-                    ),
-                    label: Text(
-                      RecorderConstants.cancelRecording,
-                      style: isRecordingStarted
-                          ? const TextStyle(color: RecorderConstants.primaryColor)
-                          : const TextStyle(color: RecorderConstants.scondaryColor),
-                    ),
-                    onPressed: isRecordingStarted ? () {} : null,
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.white,
-                      padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50.0),
-                        side: isRecordingStarted
-                            ? const BorderSide(color: RecorderConstants.primaryColor, width: 2)
-                            : const BorderSide(color: RecorderConstants.scondaryColor, width: 2),
-                      ),
-                    ),
-                  ),
-                  const SizedBox(width: 20),
-                  ElevatedButton.icon(
-                    icon: const Icon(Icons.my_library_books_rounded),
-                    label: const Text(RecorderConstants.submitRecoring),
-                    onPressed: isRecordingStarted
-                        ? () {
-                            showDialog(
-                              context: context,
-                              builder: (context) {
-                                return Dialog(
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(20),
-                                  ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(8.0),
-                                    child: ListView(
-                                      shrinkWrap: true,
-                                      children: [
-                                        const SizedBox(height: 30),
-                                        const Icon(Icons.mic, size: 60),
-                                        const SizedBox(height: 30),
-                                        const Center(
-                                          child: Text(
-                                            RecorderConstants.submitRecordingWithQuestion,
-                                            style: TextStyle(
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.w700,
-                                              fontFamily: RecorderConstants.fontFamilyArchivo,
-                                            ),
-                                          ),
-                                        ),
-                                        const SizedBox(height: 30),
-                                        const Center(
-                                          child: Text(
-                                            RecorderConstants.areYouDone,
-                                            style: TextStyle(
-                                              fontFamily: RecorderConstants.fontFamilyRoboto,
-                                            ),
-                                          ),
-                                        ),
-                                        const SizedBox(height: 10),
-                                        Center(
-                                          child: RichText(
-                                            text: TextSpan(
-                                              text: RecorderConstants.thisWillGenerate,
-                                              style: DefaultTextStyle.of(context).style,
-                                              children: const <TextSpan>[
-                                                TextSpan(
-                                                  text: RecorderConstants.visitSummaryDocument,
-                                                  style: TextStyle(
-                                                    fontWeight: FontWeight.w700,
-                                                    fontFamily: RecorderConstants.fontFamilyRoboto,
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                        const SizedBox(height: 30),
-                                        Column(
-                                          children: [
-                                            SizedBox(
-                                              width: 200,
-                                              child: ElevatedButton(
-                                                onPressed: () {},
-                                                style: ElevatedButton.styleFrom(
-                                                  backgroundColor: RecorderConstants.primaryColor,
-                                                  padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
-                                                  shape: RoundedRectangleBorder(
-                                                    borderRadius: BorderRadius.circular(50.0),
-                                                    side: const BorderSide(color: RecorderConstants.primaryColor, width: 2),
-                                                  ),
-                                                ),
-                                                child: const Text(
-                                                  RecorderConstants.submitRecoring,
-                                                  style: TextStyle(
-                                                    fontSize: 16,
-                                                    fontWeight: FontWeight.w700,
-                                                    fontFamily: RecorderConstants.fontFamilyRoboto,
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            const SizedBox(height: 5),
-                                            SizedBox(
-                                              width: 200,
-                                              child: ElevatedButton(
-                                                onPressed: () {},
-                                                style: ElevatedButton.styleFrom(
-                                                  backgroundColor: Colors.white,
-                                                  padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
-                                                  shape: RoundedRectangleBorder(
-                                                    borderRadius: BorderRadius.circular(50.0),
-                                                    side: const BorderSide(color: RecorderConstants.primaryColor, width: 2),
-                                                  ),
-                                                ),
-                                                child: const Text(
-                                                  RecorderConstants.cancel,
-                                                  style: TextStyle(
-                                                    fontSize: 16,
-                                                    color: RecorderConstants.primaryColor,
-                                                    fontWeight: FontWeight.w700,
-                                                    fontFamily: RecorderConstants.fontFamilyRoboto,
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                        const SizedBox(height: 20),
-                                      ],
-                                    ),
-                                  ),
-                                );
-                              },
-                            );
-                          }
-                        : null,
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: RecorderConstants.primaryColor,
-                      padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50.0),
-                        side: isRecordingStarted
-                            ? const BorderSide(color: RecorderConstants.primaryColor, width: 2)
-                            : const BorderSide(color: RecorderConstants.scondaryColor, width: 2),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.center,
+              //   children: [
+              //     ElevatedButton.icon(
+              //       icon: Icon(
+              //         Icons.delete_outline_outlined,
+              //         color: isRecordingStarted ? RecorderConstants.primaryColor : RecorderConstants.scondaryColor,
+              //       ),
+              //       label: Text(
+              //         RecorderConstants.cancelRecording,
+              //         style: isRecordingStarted
+              //             ? const TextStyle(color: RecorderConstants.primaryColor)
+              //             : const TextStyle(color: RecorderConstants.scondaryColor),
+              //       ),
+              //       onPressed: isRecordingStarted ? () {} : null,
+              //       style: ElevatedButton.styleFrom(
+              //         backgroundColor: Colors.white,
+              //         padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
+              //         shape: RoundedRectangleBorder(
+              //           borderRadius: BorderRadius.circular(50.0),
+              //           side: isRecordingStarted
+              //               ? const BorderSide(color: RecorderConstants.primaryColor, width: 2)
+              //               : const BorderSide(color: RecorderConstants.scondaryColor, width: 2),
+              //         ),
+              //       ),
+              //     ),
+              //     const SizedBox(width: 20),
+              //     ElevatedButton.icon(
+              //       icon: const Icon(Icons.my_library_books_rounded),
+              //       label: const Text(RecorderConstants.submitRecoring),
+              //       onPressed: isRecordingStarted
+              //           ? () {
+              //               showDialog(
+              //                 context: context,
+              //                 builder: (context) {
+              //                   return Dialog(
+              //                     shape: RoundedRectangleBorder(
+              //                       borderRadius: BorderRadius.circular(20),
+              //                     ),
+              //                     child: Padding(
+              //                       padding: const EdgeInsets.all(8.0),
+              //                       child: ListView(
+              //                         shrinkWrap: true,
+              //                         children: [
+              //                           const SizedBox(height: 30),
+              //                           const Icon(Icons.mic, size: 60),
+              //                           const SizedBox(height: 30),
+              //                           const Center(
+              //                             child: Text(
+              //                               RecorderConstants.submitRecordingWithQuestion,
+              //                               style: TextStyle(
+              //                                 fontSize: 20,
+              //                                 fontWeight: FontWeight.w700,
+              //                                 fontFamily: RecorderConstants.fontFamilyArchivo,
+              //                               ),
+              //                             ),
+              //                           ),
+              //                           const SizedBox(height: 30),
+              //                           const Center(
+              //                             child: Text(
+              //                               RecorderConstants.areYouDone,
+              //                               style: TextStyle(
+              //                                 fontFamily: RecorderConstants.fontFamilyRoboto,
+              //                               ),
+              //                             ),
+              //                           ),
+              //                           const SizedBox(height: 10),
+              //                           Center(
+              //                             child: RichText(
+              //                               text: TextSpan(
+              //                                 text: RecorderConstants.thisWillGenerate,
+              //                                 style: DefaultTextStyle.of(context).style,
+              //                                 children: const <TextSpan>[
+              //                                   TextSpan(
+              //                                     text: RecorderConstants.visitSummaryDocument,
+              //                                     style: TextStyle(
+              //                                       fontWeight: FontWeight.w700,
+              //                                       fontFamily: RecorderConstants.fontFamilyRoboto,
+              //                                     ),
+              //                                   ),
+              //                                 ],
+              //                               ),
+              //                             ),
+              //                           ),
+              //                           const SizedBox(height: 30),
+              //                           Column(
+              //                             children: [
+              //                               SizedBox(
+              //                                 width: 200,
+              //                                 child: ElevatedButton(
+              //                                   onPressed: () {},
+              //                                   style: ElevatedButton.styleFrom(
+              //                                     backgroundColor: RecorderConstants.primaryColor,
+              //                                     padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
+              //                                     shape: RoundedRectangleBorder(
+              //                                       borderRadius: BorderRadius.circular(50.0),
+              //                                       side: const BorderSide(color: RecorderConstants.primaryColor, width: 2),
+              //                                     ),
+              //                                   ),
+              //                                   child: const Text(
+              //                                     RecorderConstants.submitRecoring,
+              //                                     style: TextStyle(
+              //                                       fontSize: 16,
+              //                                       fontWeight: FontWeight.w700,
+              //                                       fontFamily: RecorderConstants.fontFamilyRoboto,
+              //                                     ),
+              //                                   ),
+              //                                 ),
+              //                               ),
+              //                               const SizedBox(height: 5),
+              //                               SizedBox(
+              //                                 width: 200,
+              //                                 child: ElevatedButton(
+              //                                   onPressed: () {},
+              //                                   style: ElevatedButton.styleFrom(
+              //                                     backgroundColor: Colors.white,
+              //                                     padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
+              //                                     shape: RoundedRectangleBorder(
+              //                                       borderRadius: BorderRadius.circular(50.0),
+              //                                       side: const BorderSide(color: RecorderConstants.primaryColor, width: 2),
+              //                                     ),
+              //                                   ),
+              //                                   child: const Text(
+              //                                     RecorderConstants.cancel,
+              //                                     style: TextStyle(
+              //                                       fontSize: 16,
+              //                                       color: RecorderConstants.primaryColor,
+              //                                       fontWeight: FontWeight.w700,
+              //                                       fontFamily: RecorderConstants.fontFamilyRoboto,
+              //                                     ),
+              //                                   ),
+              //                                 ),
+              //                               ),
+              //                             ],
+              //                           ),
+              //                           const SizedBox(height: 20),
+              //                         ],
+              //                       ),
+              //                     ),
+              //                   );
+              //                 },
+              //               );
+              //             }
+              //           : null,
+              //       style: ElevatedButton.styleFrom(
+              //         backgroundColor: RecorderConstants.primaryColor,
+              //         padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
+              //         shape: RoundedRectangleBorder(
+              //           borderRadius: BorderRadius.circular(50.0),
+              //           side: isRecordingStarted
+              //               ? const BorderSide(color: RecorderConstants.primaryColor, width: 2)
+              //               : const BorderSide(color: RecorderConstants.scondaryColor, width: 2),
+              //         ),
+              //       ),
+              //     ),
+              //   ],
+              // ),
               // if (_amplitude != null) ...[
               //   const SizedBox(height: 40),
               //   Text('Current: ${_amplitude?.current ?? 0.0}'),
@@ -357,12 +355,16 @@ class _AudioRecorderState extends State<AudioRecorder> {
   }
 
   Widget _buildTimer() {
+    final String hours = _formatNumber(_recordDuration ~/ 60);
     final String minutes = _formatNumber(_recordDuration ~/ 60);
     final String seconds = _formatNumber(_recordDuration % 60);
 
     return Text(
-      '$minutes : $seconds',
-      style: const TextStyle(color: Colors.red),
+      '$hours:$minutes:$seconds',
+      style: const TextStyle(
+        fontSize: 16,
+        fontWeight: FontWeight.w700,
+      ),
     );
   }
 
