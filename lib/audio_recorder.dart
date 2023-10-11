@@ -135,7 +135,7 @@ class _AudioRecorderState extends State<AudioRecorder> {
                 ElevatedButton.icon(
                   icon: const Icon(Icons.my_library_books_rounded),
                   label: const Text(RecorderConstants.submitRecoring),
-                  onPressed: !isRecordingStarted
+                  onPressed: isRecordingStarted
                       ? () {
                           showDialog(
                             context: context,
