@@ -161,7 +161,7 @@ class _AudioRecorderState extends State<AudioRecorder> {
                                           ),
                                         ),
                                       ),
-                                      const SizedBox(height: 40),
+                                      const SizedBox(height: 30),
                                       const Center(
                                         child: Text(RecorderConstants.areYouDone),
                                       ),
@@ -179,9 +179,8 @@ class _AudioRecorderState extends State<AudioRecorder> {
                                             ],
                                           ),
                                         ),
-                                        // 'This will generate a Visit Summary Document'
                                       ),
-                                      const SizedBox(height: 40),
+                                      const SizedBox(height: 30),
                                       Column(
                                         children: [
                                           SizedBox(
@@ -196,7 +195,14 @@ class _AudioRecorderState extends State<AudioRecorder> {
                                                   side: const BorderSide(color: RecorderConstants.primaryColor, width: 2),
                                                 ),
                                               ),
-                                              child: const Text(RecorderConstants.submitRecoring),
+                                              child: const Text(
+                                                RecorderConstants.submitRecoring,
+                                                style: TextStyle(
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.w700,
+                                                  fontFamily: RecorderConstants.fontFamilyRoboto,
+                                                ),
+                                              ),
                                             ),
                                           ),
                                           const SizedBox(height: 5),
@@ -214,7 +220,12 @@ class _AudioRecorderState extends State<AudioRecorder> {
                                               ),
                                               child: const Text(
                                                 RecorderConstants.cancel,
-                                                style: TextStyle(color: RecorderConstants.primaryColor),
+                                                style: TextStyle(
+                                                  fontSize: 16,
+                                                  color: RecorderConstants.primaryColor,
+                                                  fontWeight: FontWeight.w700,
+                                                  fontFamily: RecorderConstants.fontFamilyRoboto,
+                                                ),
                                               ),
                                             ),
                                           ),
