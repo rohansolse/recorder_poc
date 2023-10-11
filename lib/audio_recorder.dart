@@ -154,7 +154,7 @@ class _AudioRecorderState extends State<AudioRecorder> {
                                       const SizedBox(height: 30),
                                       const Center(
                                         child: Text(
-                                          RecorderConstants.submitRecoringWithQuestion,
+                                          RecorderConstants.submitRecordingWithQuestion,
                                           style: TextStyle(
                                             fontSize: 20,
                                             fontWeight: FontWeight.bold,
@@ -185,7 +185,7 @@ class _AudioRecorderState extends State<AudioRecorder> {
                                       Column(
                                         children: [
                                           SizedBox(
-                                            width: 150,
+                                            width: 200,
                                             child: ElevatedButton(
                                               onPressed: () {},
                                               style: ElevatedButton.styleFrom(
@@ -201,7 +201,7 @@ class _AudioRecorderState extends State<AudioRecorder> {
                                           ),
                                           const SizedBox(height: 5),
                                           SizedBox(
-                                            width: 150,
+                                            width: 200,
                                             child: ElevatedButton(
                                               onPressed: () {},
                                               style: ElevatedButton.styleFrom(
