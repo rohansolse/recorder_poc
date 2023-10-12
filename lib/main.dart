@@ -78,7 +78,7 @@ class _RecorderTState extends State<RecorderT> {
             ),
             const SizedBox(height: 20),
             Container(
-              height: MediaQuery.of(context).size.height * 0.6,
+              height: MediaQuery.of(context).size.height * 0.64,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [

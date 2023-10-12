@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:recorder_poc/constants.dart';
 
 class SoundWaveformWidget extends StatefulWidget {
   final int count;
@@ -59,7 +60,7 @@ class _SoundWaveformWidgetState extends State<SoundWaveformWidget> with TickerPr
                 height: i == current ? maxHeight : minHeight,
                 width: 5,
                 decoration: BoxDecoration(
-                  color: Colors.black,
+                  color: RecorderConstants.primaryColor,
                   borderRadius: BorderRadius.circular(9999),
                 ),
               ),
