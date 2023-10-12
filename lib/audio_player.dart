@@ -5,6 +5,7 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:recorder_poc/sound_waveform.dart';
 
 class AudioPlayer extends StatefulWidget {
   /// Path from where to play recorded audio
@@ -73,6 +74,14 @@ class AudioPlayerState extends State<AudioPlayer> {
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              _audioPlayer.state == ap.PlayerState.playing
+                  ? Container(
+                      height: 100,
+                      child: const SoundWaveformWidget(),
+                    )
+                  : const SizedBox(
+                      height: 100,
+                    ),
               _duration != null
                   ? Text(
                       _duration.toString().substring(0, 7),
