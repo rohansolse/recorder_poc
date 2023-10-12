@@ -180,6 +180,7 @@ class _RecorderTState extends State<RecorderT> {
                                         child: Text(
                                           RecorderConstants.areYouDone,
                                           style: TextStyle(
+                                            fontSize: 15,
                                             fontFamily: RecorderConstants.fontFamilyRoboto,
                                           ),
                                         ),
@@ -288,6 +289,7 @@ class RichTextWidget extends StatelessWidget {
           TextSpan(
             text: RecorderConstants.visitSummaryDocument,
             style: TextStyle(
+              fontSize: 15,
               fontWeight: FontWeight.w700,
               fontFamily: RecorderConstants.fontFamilyRoboto,
             ),
