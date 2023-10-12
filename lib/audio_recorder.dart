@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:record/record.dart';
 import 'package:recorder_poc/constants.dart';
+import 'package:recorder_poc/sound_waveform.dart';
 
 class AudioRecorder extends StatefulWidget {
   final void Function(String path) onStop;
@@ -98,6 +99,14 @@ class _AudioRecorderState extends State<AudioRecorder> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              _recordState != RecordState.stop
+                  ? Container(
+                      height: 100,
+                      child: const SoundWaveformWidget(),
+                    )
+                  : const SizedBox(
+                      height: 100,
+                    ),
               const SizedBox(height: 100),
               _buildText(),
               const SizedBox(height: 40),
