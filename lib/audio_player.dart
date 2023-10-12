@@ -37,7 +37,8 @@ class AudioPlayerState extends State<AudioPlayer> {
 
   @override
   void initState() {
-    _playerStateChangedSubscription = _audioPlayer.onPlayerComplete.listen((state) async {
+    _playerStateChangedSubscription =
+        _audioPlayer.onPlayerComplete.listen((state) async {
       await stop();
       setState(() {});
     });
@@ -76,7 +77,8 @@ class AudioPlayerState extends State<AudioPlayer> {
               _duration != null
                   ? Text(
                       _duration.toString().substring(0, 7),
-                      style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
+                      style: const TextStyle(
+                          fontSize: 16, fontWeight: FontWeight.w700),
                     )
                   : const SizedBox(height: 0, width: 0),
               _buildSlider(constraints.maxWidth),
@@ -111,38 +113,28 @@ class AudioPlayerState extends State<AudioPlayer> {
     late Color color = const Color.fromRGBO(205, 60, 50, 1);
 
     return AvatarGlow(
-      endRadius: 80,
-      glowColor: color,
-      animate: _audioPlayer.state == ap.PlayerState.playing,
-      duration: const Duration(milliseconds: 1000),
-      repeatPauseDuration: const Duration(milliseconds: 200),
-      child: ClipOval(
-        child: Material(
-          color: color,
-          child: InkWell(
-            child: SizedBox(
-              width: _controlSize,
-              height: _controlSize,
-              child: _audioPlayer.state == ap.PlayerState.playing
-                  ? Image.asset(
-                      "assets/vector.png",
-                      height: 24,
-                      width: 24,
-                    )
-                  : const Icon(Icons.play_arrow, color: Colors.white, size: 30),
-            ),
-            onTap: () {
-              if (_audioPlayer.state == ap.PlayerState.playing) {
-                pause();
-              } else {
-                play();
-              }
-              setState(() {});
-            },
-          ),
-        ),
-      ),
-    );
+        endRadius: 80,
+        glowColor: color,
+        animate: _audioPlayer.state == ap.PlayerState.playing,
+        duration: const Duration(milliseconds: 1000),
+        repeatPauseDuration: const Duration(milliseconds: 200),
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+              shape: const CircleBorder(),
+              padding: const EdgeInsets.all(16),
+              backgroundColor: color),
+          child: _audioPlayer.state == ap.PlayerState.playing
+              ? Image.asset(
+                  "assets/vector.png",
+                  height: 24,
+                  width: 24,
+                )
+              : const Icon(Icons.play_arrow, color: Colors.white, size: 24),
+          onPressed: () {
+            (_audioPlayer.state == ap.PlayerState.playing) ? pause() : play();
+            setState(() {});
+          },
+        ));
   }
 
   Widget _buildSlider(double widgetWidth) {
@@ -170,7 +162,9 @@ class AudioPlayerState extends State<AudioPlayer> {
             _audioPlayer.seek(Duration(milliseconds: position.round()));
           }
         },
-        value: canSetValue && duration != null && position != null ? position.inMilliseconds / duration.inMilliseconds : 0.0,
+        value: canSetValue && duration != null && position != null
+            ? position.inMilliseconds / duration.inMilliseconds
+            : 0.0,
       ),
     );
   }

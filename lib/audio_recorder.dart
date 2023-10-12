@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:record/record.dart';
@@ -29,7 +30,9 @@ class _AudioRecorderState extends State<AudioRecorder> {
       setState(() => _recordState = recordState);
     });
 
-    _amplitudeSub = _audioRecorder.onAmplitudeChanged(const Duration(milliseconds: 300)).listen((amp) => setState(() => _amplitude = amp));
+    _amplitudeSub = _audioRecorder
+        .onAmplitudeChanged(const Duration(milliseconds: 300))
+        .listen((amp) => setState(() => _amplitude = amp));
 
     super.initState();
   }
@@ -279,34 +282,35 @@ class _AudioRecorderState extends State<AudioRecorder> {
   }
 
   Widget _buildRecordStopControl() {
-    late Widget icon;
     late Color color = const Color.fromRGBO(205, 60, 50, 1);
 
-    if (_recordState != RecordState.stop) {
-      icon = Image.asset(
-        "assets/vector.png",
-        height: 24,
-        width: 24,
-      );
-    } else {
-      icon = Image.asset(
-        "assets/mic_icon.png",
-        height: 24,
-        width: 24,
-      );
-    }
-
-    return ClipOval(
-      child: Material(
-        color: color,
-        child: InkWell(
-          child: SizedBox(width: 57.7, height: 57.7, child: icon),
-          onTap: () {
+    return AvatarGlow(
+        endRadius: 80,
+        glowColor: color,
+        animate: _recordState != RecordState.stop,
+        duration: const Duration(milliseconds: 1000),
+        repeatPauseDuration: const Duration(milliseconds: 200),
+        child: ElevatedButton(
+          style: ElevatedButton.styleFrom(
+              shape: const CircleBorder(),
+              padding: const EdgeInsets.all(16),
+              backgroundColor: color),
+          child: _recordState != RecordState.stop
+              ? Image.asset(
+                  "assets/vector.png",
+                  height: 24,
+                  width: 24,
+                )
+              : Image.asset(
+                  "assets/mic_icon.png",
+                  height: 24,
+                  width: 24,
+                ),
+          onPressed: () {
             (_recordState != RecordState.stop) ? _stop() : _start();
+            setState(() {});
           },
-        ),
-      ),
-    );
+        ));
   }
 
   Widget _buildPauseResumeControl() {
