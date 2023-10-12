@@ -108,18 +108,7 @@ class AudioPlayerState extends State<AudioPlayer> {
   }
 
   Widget _buildControl() {
-    Widget icon;
     late Color color = const Color.fromRGBO(205, 60, 50, 1);
-
-    if (_audioPlayer.state == ap.PlayerState.playing) {
-      icon = Image.asset(
-        "assets/vector.png",
-        height: 24,
-        width: 24,
-      );
-    } else {
-      icon = const Icon(Icons.play_arrow, color: Colors.white, size: 30);
-    }
 
     return AvatarGlow(
       endRadius: 80,
@@ -131,13 +120,24 @@ class AudioPlayerState extends State<AudioPlayer> {
         child: Material(
           color: color,
           child: InkWell(
-            child: SizedBox(width: _controlSize, height: _controlSize, child: icon),
+            child: SizedBox(
+              width: _controlSize,
+              height: _controlSize,
+              child: _audioPlayer.state == ap.PlayerState.playing
+                  ? Image.asset(
+                      "assets/vector.png",
+                      height: 24,
+                      width: 24,
+                    )
+                  : const Icon(Icons.play_arrow, color: Colors.white, size: 30),
+            ),
             onTap: () {
               if (_audioPlayer.state == ap.PlayerState.playing) {
                 pause();
               } else {
                 play();
               }
+              setState(() {});
             },
           ),
         ),
