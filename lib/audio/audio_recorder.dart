@@ -9,7 +9,7 @@ import 'package:recorder_poc/audio/sound_waveform.dart';
 class AudioRecorder extends StatefulWidget {
   final void Function(String path) onStop;
 
-  const AudioRecorder({Key? key, required this.onStop}) : super(key: key);
+  const AudioRecorder({super.key, required this.onStop});
 
   @override
   State<AudioRecorder> createState() => _AudioRecorderState();
@@ -30,7 +30,13 @@ class _AudioRecorderState extends State<AudioRecorder> {
       setState(() => _recordState = recordState);
     });
 
-    _amplitudeSub = _audioRecorder.onAmplitudeChanged(const Duration(milliseconds: 300)).listen((amp) => setState(() => {}));
+    _amplitudeSub = _audioRecorder
+        .onAmplitudeChanged(
+          const Duration(milliseconds: 300),
+        )
+        .listen(
+          (amp) => setState(() => {}),
+        );
 
     super.initState();
   }
@@ -118,10 +124,14 @@ class _AudioRecorderState extends State<AudioRecorder> {
         duration: const Duration(milliseconds: 1000),
         repeatPauseDuration: const Duration(milliseconds: 200),
         child: ElevatedButton(
-          style: ElevatedButton.styleFrom(shape: const CircleBorder(), padding: const EdgeInsets.all(16), backgroundColor: color),
+          style: ElevatedButton.styleFrom(
+            shape: const CircleBorder(),
+            padding: const EdgeInsets.all(16),
+            backgroundColor: color,
+          ),
           child: _recordState != RecordState.stop
               ? Image.asset(
-                  "assets/vector.png",
+                  "assets/pause_icon.png",
                   height: 24,
                   width: 24,
                 )
@@ -177,7 +187,7 @@ class _AudioRecorderState extends State<AudioRecorder> {
     _timer?.cancel();
 
     _timer = Timer.periodic(const Duration(seconds: 1), (Timer t) {
-      setState(() => _recordDuration = _recordDuration + 59);
+      setState(() => _recordDuration++);
     });
   }
 }

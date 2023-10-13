@@ -124,8 +124,11 @@ class _RecorderState extends State<Recorder> {
                   ),
                   label: Text(
                     RecorderConstants.cancelRecording,
-                    style:
-                        showPlayer ? const TextStyle(color: RecorderConstants.primaryColor) : const TextStyle(color: RecorderConstants.scondaryColor),
+                    style: showPlayer
+                        ? const TextStyle(color: RecorderConstants.primaryColor)
+                        : const TextStyle(
+                            color: RecorderConstants.scondaryColor,
+                          ),
                   ),
                   onPressed: showPlayer
                       ? () {

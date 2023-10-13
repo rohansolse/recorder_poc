@@ -97,33 +97,34 @@ class AudioPlayerState extends State<AudioPlayer> {
     late Color color = RecorderConstants.redButtonColor;
 
     return AvatarGlow(
-        endRadius: 80,
-        glowColor: color,
-        animate: _audioPlayer.state == ap.PlayerState.playing,
-        duration: const Duration(milliseconds: 1000),
-        repeatPauseDuration: const Duration(milliseconds: 200),
-        child: ElevatedButton(
-          style: ElevatedButton.styleFrom(
-            shape: const CircleBorder(),
-            padding: const EdgeInsets.all(16),
-            backgroundColor: color,
-          ),
-          child: _audioPlayer.state == ap.PlayerState.playing
-              ? Image.asset(
-                  "assets/vector.png",
-                  height: 24,
-                  width: 24,
-                )
-              : const Icon(
-                  Icons.play_arrow,
-                  color: RecorderConstants.whiteColor,
-                  size: 24,
-                ),
-          onPressed: () {
-            (_audioPlayer.state == ap.PlayerState.playing) ? pause() : play();
-            setState(() {});
-          },
-        ));
+      endRadius: 80,
+      glowColor: color,
+      animate: _audioPlayer.state == ap.PlayerState.playing,
+      duration: const Duration(milliseconds: 1000),
+      repeatPauseDuration: const Duration(milliseconds: 200),
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+          shape: const CircleBorder(),
+          padding: const EdgeInsets.all(16),
+          backgroundColor: color,
+        ),
+        child: _audioPlayer.state == ap.PlayerState.playing
+            ? Image.asset(
+                "assets/pause_icon.png",
+                height: 24,
+                width: 24,
+              )
+            : const Icon(
+                Icons.play_arrow,
+                color: RecorderConstants.whiteColor,
+                size: 24,
+              ),
+        onPressed: () {
+          (_audioPlayer.state == ap.PlayerState.playing) ? pause() : play();
+          setState(() {});
+        },
+      ),
+    );
   }
 
   Widget _buildSlider(double widgetWidth) {
