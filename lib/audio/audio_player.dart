@@ -70,9 +70,9 @@ class AudioPlayerState extends State<AudioPlayer> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               _audioPlayer.state == ap.PlayerState.playing
-                  ? Container(
+                  ? const SizedBox(
                       height: 100,
-                      child: const SoundWaveformWidget(),
+                      child: SoundWaveformWidget(),
                     )
                   : const SizedBox(
                       height: 100,

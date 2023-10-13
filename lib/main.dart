@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:recorder_poc/audio/audio_player.dart';
 import 'package:recorder_poc/audio/audio_recorder.dart';
 import 'package:recorder_poc/constants.dart';
-import 'package:recorder_poc/audio/widgets/richtext_widget.dart';
+import 'package:recorder_poc/audio/widgets/recorders_widget.dart';
 
 void main() => runApp(const MyApp());
 
@@ -216,58 +216,29 @@ class _RecorderState extends State<Recorder> {
                 const SizedBox(height: 30),
                 Column(
                   children: [
-                    SizedBox(
+                    elevatedButtonWidget(
                       width: 200,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                          setState(() {
-                            showPlayer = false;
-                          });
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: RecorderConstants.primaryColor,
-                          padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(50.0),
-                            side: const BorderSide(color: RecorderConstants.primaryColor, width: 2),
-                          ),
-                        ),
-                        child: const Text(
-                          RecorderConstants.submitRecoring,
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w700,
-                            fontFamily: RecorderConstants.fontFamilyRoboto,
-                          ),
-                        ),
-                      ),
+                      text: RecorderConstants.submitRecoring,
+                      backgroundColor: RecorderConstants.primaryColor,
+                      borderColor: RecorderConstants.primaryColor,
+                      textColor: Colors.white,
+                      onPressed: () {
+                        Navigator.pop(context);
+                        setState(() {
+                          showPlayer = false;
+                        });
+                      },
                     ),
                     const SizedBox(height: 5),
-                    SizedBox(
+                    elevatedButtonWidget(
                       width: 200,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.white,
-                          padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(50.0),
-                            side: const BorderSide(color: RecorderConstants.primaryColor, width: 2),
-                          ),
-                        ),
-                        child: const Text(
-                          RecorderConstants.cancel,
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: RecorderConstants.primaryColor,
-                            fontWeight: FontWeight.w700,
-                            fontFamily: RecorderConstants.fontFamilyRoboto,
-                          ),
-                        ),
-                      ),
+                      text: RecorderConstants.cancel,
+                      backgroundColor: Colors.white,
+                      borderColor: RecorderConstants.primaryColor,
+                      textColor: RecorderConstants.primaryColor,
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
                     ),
                   ],
                 ),
