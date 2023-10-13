@@ -147,48 +147,6 @@ class _AudioRecorderState extends State<AudioRecorder> {
         ));
   }
 
-  Widget _buildPauseResumeControl() {
-    if (_recordState == RecordState.stop) {
-      return const SizedBox.shrink();
-    }
-
-    late Icon icon;
-    late Color color;
-
-    if (_recordState == RecordState.record) {
-      icon = const Icon(
-        Icons.pause,
-        color: RecorderConstants.redColor,
-        size: 30,
-      );
-      color = Colors.red.withOpacity(0.1);
-    } else {
-      final theme = Theme.of(context);
-      icon = const Icon(
-        Icons.play_arrow,
-        color: RecorderConstants.redColor,
-        size: 30,
-      );
-      color = theme.primaryColor.withOpacity(0.1);
-    }
-
-    return ClipOval(
-      child: Material(
-        color: color,
-        child: InkWell(
-          child: SizedBox(
-            width: 56,
-            height: 56,
-            child: icon,
-          ),
-          onTap: () {
-            (_recordState == RecordState.pause) ? _resume() : _pause();
-          },
-        ),
-      ),
-    );
-  }
-
   Widget _buildText() {
     if (_recordState != RecordState.stop) {
       return _buildTimer();

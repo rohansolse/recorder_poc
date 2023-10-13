@@ -10,7 +10,7 @@ class RichTextWidget extends StatelessWidget {
       text: TextSpan(
         text: RecorderConstants.thisWillGenerate,
         style: DefaultTextStyle.of(context).style,
-        children: const <TextSpan>[
+        children: const [
           TextSpan(
             text: RecorderConstants.visitSummaryDocument,
             style: TextStyle(
