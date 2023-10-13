@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:recorder_poc/constants.dart';
 
@@ -58,7 +57,7 @@ class _SoundWaveformWidgetState extends State<SoundWaveformWidget> with TickerPr
                 duration: Duration(milliseconds: widget.durationInMilliseconds ~/ count),
                 margin: i == (count - 1) ? EdgeInsets.zero : const EdgeInsets.only(right: 5),
                 height: i == current ? maxHeight : minHeight,
-                width: 5,
+                width: 8,
                 decoration: BoxDecoration(
                   color: RecorderConstants.primaryColor,
                   borderRadius: BorderRadius.circular(9999),
