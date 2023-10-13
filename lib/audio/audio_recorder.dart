@@ -119,7 +119,7 @@ class _AudioRecorderState extends State<AudioRecorder> {
   }
 
   Widget _buildRecordStopControl() {
-    late Color color = const Color.fromRGBO(205, 60, 50, 1);
+    late Color color = RecorderConstants.redButtonColor;
 
     return AvatarGlow(
         endRadius: 80,
@@ -156,11 +156,19 @@ class _AudioRecorderState extends State<AudioRecorder> {
     late Color color;
 
     if (_recordState == RecordState.record) {
-      icon = const Icon(Icons.pause, color: Colors.red, size: 30);
+      icon = const Icon(
+        Icons.pause,
+        color: RecorderConstants.redColor,
+        size: 30,
+      );
       color = Colors.red.withOpacity(0.1);
     } else {
       final theme = Theme.of(context);
-      icon = const Icon(Icons.play_arrow, color: Colors.red, size: 30);
+      icon = const Icon(
+        Icons.play_arrow,
+        color: RecorderConstants.redColor,
+        size: 30,
+      );
       color = theme.primaryColor.withOpacity(0.1);
     }
 
@@ -168,7 +176,11 @@ class _AudioRecorderState extends State<AudioRecorder> {
       child: Material(
         color: color,
         child: InkWell(
-          child: SizedBox(width: 56, height: 56, child: icon),
+          child: SizedBox(
+            width: 56,
+            height: 56,
+            child: icon,
+          ),
           onTap: () {
             (_recordState == RecordState.pause) ? _resume() : _pause();
           },
@@ -181,9 +193,9 @@ class _AudioRecorderState extends State<AudioRecorder> {
     if (_recordState != RecordState.stop) {
       return _buildTimer();
     }
-    return Text(
+    return const Text(
       RecorderConstants.startRecording,
-      style: const TextStyle(
+      style: TextStyle(
         fontSize: 20,
         fontWeight: FontWeight.w700,
       ),

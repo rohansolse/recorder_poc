@@ -1,11 +1,11 @@
 import 'dart:async';
-
 import 'package:audioplayers/audioplayers.dart' as ap;
 import 'package:audioplayers/audioplayers.dart';
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:recorder_poc/audio/sound_waveform.dart';
+import 'package:recorder_poc/constants.dart';
 
 class AudioPlayer extends StatefulWidget {
   final String source;
@@ -94,7 +94,7 @@ class AudioPlayerState extends State<AudioPlayer> {
   }
 
   Widget _buildControl() {
-    late Color color = const Color.fromRGBO(205, 60, 50, 1);
+    late Color color = RecorderConstants.redButtonColor;
 
     return AvatarGlow(
         endRadius: 80,
@@ -103,14 +103,22 @@ class AudioPlayerState extends State<AudioPlayer> {
         duration: const Duration(milliseconds: 1000),
         repeatPauseDuration: const Duration(milliseconds: 200),
         child: ElevatedButton(
-          style: ElevatedButton.styleFrom(shape: const CircleBorder(), padding: const EdgeInsets.all(16), backgroundColor: color),
+          style: ElevatedButton.styleFrom(
+            shape: const CircleBorder(),
+            padding: const EdgeInsets.all(16),
+            backgroundColor: color,
+          ),
           child: _audioPlayer.state == ap.PlayerState.playing
               ? Image.asset(
                   "assets/vector.png",
                   height: 24,
                   width: 24,
                 )
-              : const Icon(Icons.play_arrow, color: Colors.white, size: 24),
+              : const Icon(
+                  Icons.play_arrow,
+                  color: RecorderConstants.whiteColor,
+                  size: 24,
+                ),
           onPressed: () {
             (_audioPlayer.state == ap.PlayerState.playing) ? pause() : play();
             setState(() {});
@@ -134,8 +142,8 @@ class AudioPlayerState extends State<AudioPlayer> {
     return SizedBox(
       width: width,
       child: Slider(
-        activeColor: const Color.fromRGBO(0, 102, 78, 1),
-        inactiveColor: const Color.fromRGBO(201, 201, 201, 1),
+        activeColor: RecorderConstants.sliderActiveColor,
+        inactiveColor: RecorderConstants.sliderInActiveColor,
         onChanged: (v) {
           if (duration != null) {
             final position = v * duration.inMilliseconds;

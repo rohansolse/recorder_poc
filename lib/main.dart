@@ -45,13 +45,13 @@ class _RecorderState extends State<Recorder> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: RecorderConstants.whiteColor,
         title: const Text(
           RecorderConstants.appointmentsDetails,
           style: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w700,
-            color: Color.fromRGBO(0, 152, 116, 1),
+            color: RecorderConstants.primaryColor,
           ),
         ),
         centerTitle: false,
@@ -135,7 +135,7 @@ class _RecorderState extends State<Recorder> {
                         }
                       : null,
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.white,
+                    backgroundColor: RecorderConstants.whiteColor,
                     padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(50.0),
@@ -221,7 +221,7 @@ class _RecorderState extends State<Recorder> {
                       text: RecorderConstants.submitRecoring,
                       backgroundColor: RecorderConstants.primaryColor,
                       borderColor: RecorderConstants.primaryColor,
-                      textColor: Colors.white,
+                      textColor: RecorderConstants.whiteColor,
                       onPressed: () {
                         Navigator.pop(context);
                         setState(() {
@@ -233,7 +233,7 @@ class _RecorderState extends State<Recorder> {
                     elevatedButtonWidget(
                       width: 200,
                       text: RecorderConstants.cancel,
-                      backgroundColor: Colors.white,
+                      backgroundColor: RecorderConstants.whiteColor,
                       borderColor: RecorderConstants.primaryColor,
                       textColor: RecorderConstants.primaryColor,
                       onPressed: () {
