@@ -151,11 +151,12 @@ class _AudioRecorderState extends State<AudioRecorder> {
   }
 
   Widget _buildTimer() {
-    final String minutes = _formatNumber(_recordDuration ~/ 60);
+    final String hours = _formatNumber(_recordDuration ~/ 3600);
+    final String minutes = _formatNumber((_recordDuration % 3600) ~/ 60);
     final String seconds = _formatNumber(_recordDuration % 60);
 
     return Text(
-      '00:$minutes:$seconds',
+      '$hours:$minutes:$seconds',
       style: const TextStyle(
         fontSize: 16,
         fontWeight: FontWeight.w700,
@@ -176,7 +177,7 @@ class _AudioRecorderState extends State<AudioRecorder> {
     _timer?.cancel();
 
     _timer = Timer.periodic(const Duration(seconds: 1), (Timer t) {
-      setState(() => _recordDuration++);
+      setState(() => _recordDuration = _recordDuration + 59);
     });
   }
 }
