@@ -5,14 +5,10 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:avatar_glow/avatar_glow.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:recorder_poc/sound_waveform.dart';
+import 'package:recorder_poc/audio/sound_waveform.dart';
 
 class AudioPlayer extends StatefulWidget {
-  /// Path from where to play recorded audio
   final String source;
-
-  /// Callback when audio file should be removed
-  /// Setting this to null hides the delete button
   final VoidCallback onDelete;
 
   const AudioPlayer({
@@ -26,7 +22,6 @@ class AudioPlayer extends StatefulWidget {
 }
 
 class AudioPlayerState extends State<AudioPlayer> {
-  static const double _controlSize = 56;
   static const double _deleteBtnSize = 24;
 
   final _audioPlayer = ap.AudioPlayer()..setReleaseMode(ReleaseMode.stop);
@@ -38,8 +33,7 @@ class AudioPlayerState extends State<AudioPlayer> {
 
   @override
   void initState() {
-    _playerStateChangedSubscription =
-        _audioPlayer.onPlayerComplete.listen((state) async {
+    _playerStateChangedSubscription = _audioPlayer.onPlayerComplete.listen((state) async {
       await stop();
       setState(() {});
     });
@@ -86,31 +80,12 @@ class AudioPlayerState extends State<AudioPlayer> {
               _duration != null
                   ? Text(
                       _duration.toString().substring(0, 7),
-                      style: const TextStyle(
-                          fontSize: 16, fontWeight: FontWeight.w700),
+                      style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
                     )
                   : const SizedBox(height: 0, width: 0),
               _buildSlider(constraints.maxWidth),
               const SizedBox(height: 10),
               _buildControl(),
-              // Row(
-              //   mainAxisSize: MainAxisSize.max,
-              //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //   children: <Widget>[
-              //     _buildControl(),
-              //     _buildSlider(constraints.maxWidth),
-              //     IconButton(
-              //       icon: const Icon(Icons.delete, color: Color(0xFF73748D), size: _deleteBtnSize),
-              //       onPressed: () {
-              //         if (_audioPlayer.state == ap.PlayerState.playing) {
-              //           stop().then((value) => widget.onDelete());
-              //         } else {
-              //           widget.onDelete();
-              //         }
-              //       },
-              //     ),
-              //   ],
-              // ),
             ],
           ),
         );
@@ -128,10 +103,7 @@ class AudioPlayerState extends State<AudioPlayer> {
         duration: const Duration(milliseconds: 1000),
         repeatPauseDuration: const Duration(milliseconds: 200),
         child: ElevatedButton(
-          style: ElevatedButton.styleFrom(
-              shape: const CircleBorder(),
-              padding: const EdgeInsets.all(16),
-              backgroundColor: color),
+          style: ElevatedButton.styleFrom(shape: const CircleBorder(), padding: const EdgeInsets.all(16), backgroundColor: color),
           child: _audioPlayer.state == ap.PlayerState.playing
               ? Image.asset(
                   "assets/vector.png",
@@ -156,7 +128,6 @@ class AudioPlayerState extends State<AudioPlayer> {
       canSetValue &= position.inMilliseconds < duration.inMilliseconds;
     }
 
-    // double width = widgetWidth - _controlSize - _deleteBtnSize;
     double width = widgetWidth;
     width -= _deleteBtnSize;
 
@@ -171,9 +142,7 @@ class AudioPlayerState extends State<AudioPlayer> {
             _audioPlayer.seek(Duration(milliseconds: position.round()));
           }
         },
-        value: canSetValue && duration != null && position != null
-            ? position.inMilliseconds / duration.inMilliseconds
-            : 0.0,
+        value: canSetValue && duration != null && position != null ? position.inMilliseconds / duration.inMilliseconds : 0.0,
       ),
     );
   }
