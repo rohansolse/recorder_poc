@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class RecorderConstants {
   static const primaryColor = Color.fromRGBO(0, 152, 116, 1);
-  static const scondaryColor = Color.fromRGBO(158, 158, 158, 1);
+  static const scondaryColor = Color.fromRGBO(217, 217, 217, 1);
   static const redButtonColor = Color.fromRGBO(205, 60, 50, 1);
   static const sliderActiveColor = Color.fromRGBO(0, 102, 78, 1);
   static const sliderInActiveColor = Color.fromRGBO(201, 201, 201, 1);

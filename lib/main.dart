@@ -117,35 +117,48 @@ class _RecorderState extends State<Recorder> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                ElevatedButton.icon(
-                  icon: Icon(
-                    Icons.delete_outline_outlined,
-                    color: showPlayer ? RecorderConstants.primaryColor : RecorderConstants.scondaryColor,
-                  ),
-                  label: Text(
-                    RecorderConstants.cancelRecording,
-                    style: showPlayer
-                        ? const TextStyle(color: RecorderConstants.primaryColor)
-                        : const TextStyle(
-                            color: RecorderConstants.scondaryColor,
-                          ),
-                  ),
+                ElevatedButton(
                   onPressed: showPlayer
                       ? () {
                           setState(() {
                             showPlayer = false;
                           });
                         }
-                      : null,
+                      : () {},
                   style: ElevatedButton.styleFrom(
+                    elevation: 0,
                     backgroundColor: RecorderConstants.whiteColor,
                     padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(50.0),
                       side: showPlayer
-                          ? const BorderSide(color: RecorderConstants.primaryColor, width: 2)
-                          : const BorderSide(color: RecorderConstants.scondaryColor, width: 2),
+                          ? const BorderSide(color: RecorderConstants.primaryColor, width: 1)
+                          : const BorderSide(color: RecorderConstants.scondaryColor, width: 1),
                     ),
+                  ),
+                  child: Row(
+                    children: [
+                      showPlayer
+                          ? Image.asset(
+                              'assets/cancelActive.png',
+                              height: 20,
+                              width: 20,
+                            )
+                          : Image.asset(
+                              'assets/cancelInactive.png',
+                              height: 20,
+                              width: 20,
+                            ),
+                      const SizedBox(width: 3),
+                      Text(
+                        RecorderConstants.cancelRecording,
+                        style: showPlayer
+                            ? const TextStyle(color: RecorderConstants.primaryColor)
+                            : const TextStyle(
+                                color: RecorderConstants.scondaryColor,
+                              ),
+                      ),
+                    ],
                   ),
                 ),
                 const SizedBox(width: 20),
@@ -158,6 +171,7 @@ class _RecorderState extends State<Recorder> {
                         }
                       : null,
                   style: ElevatedButton.styleFrom(
+                    elevation: 0,
                     backgroundColor: RecorderConstants.primaryColor,
                     padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
                     shape: RoundedRectangleBorder(
