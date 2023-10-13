@@ -73,16 +73,6 @@ class _AudioRecorderState extends State<AudioRecorder> {
     }
   }
 
-  Future<void> _pause() async {
-    _timer?.cancel();
-    await _audioRecorder.pause();
-  }
-
-  Future<void> _resume() async {
-    _startTimer();
-    await _audioRecorder.resume();
-  }
-
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
@@ -161,12 +151,11 @@ class _AudioRecorderState extends State<AudioRecorder> {
   }
 
   Widget _buildTimer() {
-    final String hours = _formatNumber(_recordDuration ~/ 60);
     final String minutes = _formatNumber(_recordDuration ~/ 60);
     final String seconds = _formatNumber(_recordDuration % 60);
 
     return Text(
-      '$hours:$minutes:$seconds',
+      '00:$minutes:$seconds',
       style: const TextStyle(
         fontSize: 16,
         fontWeight: FontWeight.w700,
