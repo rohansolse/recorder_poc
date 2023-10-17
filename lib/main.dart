@@ -18,8 +18,6 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    String tdata = DateFormat("hh:mm a").format(DateTime.now());
-    print(tdata);
     return SafeArea(
       child: MaterialApp(
         home: Scaffold(
@@ -73,7 +71,7 @@ class _MyAppState extends State<MyApp> {
                     dob: '10/03/1990',
                     gender: 'female',
                     address: 'Boca Raton Regional Hospital',
-                    date: 'Friday, 29 September',
+                    date: DateTime.now(),
                     time: DateTime.now(),
                     status: Status.noRecording,
                   ),
@@ -83,7 +81,7 @@ class _MyAppState extends State<MyApp> {
                     dob: '10/03/1990',
                     gender: 'female',
                     address: 'Boca Raton Regional Hospital',
-                    date: 'Friday, 29 September',
+                    date: DateTime.now(),
                     time: DateTime.now(),
                     status: Status.approved,
                   ),
@@ -93,7 +91,7 @@ class _MyAppState extends State<MyApp> {
                     dob: '10/03/1990',
                     gender: 'female',
                     address: 'Boca Raton Regional Hospital',
-                    date: 'Friday, 29 September',
+                    date: DateTime.now(),
                     time: DateTime.now(),
                     status: Status.rejected,
                   ),
@@ -103,7 +101,7 @@ class _MyAppState extends State<MyApp> {
                     dob: '10/03/1990',
                     gender: 'female',
                     address: 'Boca Raton Regional Hospital',
-                    date: 'Friday, 29 September',
+                    date: DateTime.now(),
                     time: DateTime.now(),
                     status: Status.pending,
                   ),

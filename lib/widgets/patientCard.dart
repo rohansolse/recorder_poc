@@ -19,7 +19,7 @@ class PatientCard extends StatelessWidget {
   final String dob;
   final String gender;
   final String address;
-  final String date;
+  final DateTime date;
   final DateTime time;
   final Enum status;
 
@@ -140,7 +140,7 @@ class PatientCard extends StatelessWidget {
                     ),
                     const SizedBox(width: 10),
                     Text(
-                      date,
+                      DateFormat("EEEEE, dd MMMM").format(date),
                       style: const TextStyle(
                         color: AppConstants.contentColor,
                       ),
