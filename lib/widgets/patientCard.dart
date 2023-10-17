@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:recorder_poc/constants.dart';
 import 'package:recorder_poc/statusEnums.dart';
 
@@ -19,7 +20,7 @@ class PatientCard extends StatelessWidget {
   final String gender;
   final String address;
   final String date;
-  final String time;
+  final DateTime time;
   final Enum status;
 
   @override
@@ -152,7 +153,7 @@ class PatientCard extends StatelessWidget {
                     ),
                     const SizedBox(width: 10),
                     Text(
-                      time,
+                      DateFormat("hh:mm a").format(time),
                       style: const TextStyle(
                         color: AppConstants.contentColor,
                       ),

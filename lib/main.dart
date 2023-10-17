@@ -1,3 +1,4 @@
+import 'package:intl/intl.dart';
 import 'package:flutter/material.dart';
 import 'package:recorder_poc/constants.dart';
 import 'package:recorder_poc/statusEnums.dart';
@@ -17,6 +18,8 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
+    String tdata = DateFormat("hh:mm a").format(DateTime.now());
+    print(tdata);
     return SafeArea(
       child: MaterialApp(
         home: Scaffold(
@@ -65,43 +68,43 @@ class _MyAppState extends State<MyApp> {
                     fontWeight: AppConstants.fontWeight500,
                   ),
                   const SizedBox(height: 15),
-                  const PatientCard(
+                  PatientCard(
                     title: 'Patient A',
                     dob: '10/03/1990',
                     gender: 'female',
                     address: 'Boca Raton Regional Hospital',
                     date: 'Friday, 29 September',
-                    time: '11:00 AM',
+                    time: DateTime.now(),
                     status: Status.noRecording,
                   ),
                   const SizedBox(height: 15),
-                  const PatientCard(
+                  PatientCard(
                     title: 'Patient A',
                     dob: '10/03/1990',
                     gender: 'female',
                     address: 'Boca Raton Regional Hospital',
                     date: 'Friday, 29 September',
-                    time: '11:00 AM',
+                    time: DateTime.now(),
                     status: Status.approved,
                   ),
                   const SizedBox(height: 15),
-                  const PatientCard(
+                  PatientCard(
                     title: 'Patient A',
                     dob: '10/03/1990',
                     gender: 'female',
                     address: 'Boca Raton Regional Hospital',
                     date: 'Friday, 29 September',
-                    time: '11:00 AM',
+                    time: DateTime.now(),
                     status: Status.rejected,
                   ),
                   const SizedBox(height: 15),
-                  const PatientCard(
+                  PatientCard(
                     title: 'Patient A',
                     dob: '10/03/1990',
                     gender: 'female',
                     address: 'Boca Raton Regional Hospital',
                     date: 'Friday, 29 September',
-                    time: '11:00 AM',
+                    time: DateTime.now(),
                     status: Status.pending,
                   ),
                 ],
