@@ -26,6 +26,7 @@ class _MyAppState extends State<MyApp> {
                 children: [
                   const SizedBox(height: 15),
                   CommonElevatedButton(
+                    elevation: 0,
                     hight: 48.0,
                     width: 369.0,
                     backgroundColor: AppConstants.primaryColor,
@@ -46,6 +47,7 @@ class _MyAppState extends State<MyApp> {
                     textColor: AppConstants.primaryColor,
                   ),
                   CommonElevatedButton(
+                    elevation: 0,
                     hight: 48.0,
                     width: 369.0,
                     backgroundColor: AppConstants.primaryColor,
@@ -59,6 +61,7 @@ class _MyAppState extends State<MyApp> {
                   ),
                   const SizedBox(height: 15),
                   CommonElevatedButton(
+                    elevation: 0,
                     hight: 48.0,
                     width: 369.0,
                     backgroundColor: AppConstants.primaryColor,
@@ -72,6 +75,7 @@ class _MyAppState extends State<MyApp> {
                   ),
                   const SizedBox(height: 15),
                   CommonElevatedButton(
+                    elevation: 0,
                     hight: 48.0,
                     width: 369.0,
                     backgroundColor: AppConstants.primaryColor,
@@ -89,6 +93,7 @@ class _MyAppState extends State<MyApp> {
                     child: Row(
                       children: [
                         CommonElevatedButton(
+                          elevation: 0,
                           hight: 48.0,
                           width: 159.0,
                           backgroundColor: AppConstants.whiteColor,
@@ -102,6 +107,7 @@ class _MyAppState extends State<MyApp> {
                         ),
                         const SizedBox(width: 15),
                         CommonElevatedButton(
+                          elevation: 0,
                           hight: 48.0,
                           width: 159.0,
                           backgroundColor: AppConstants.primaryColor,
@@ -120,6 +126,7 @@ class _MyAppState extends State<MyApp> {
                   Column(
                     children: [
                       CommonElevatedButton(
+                        elevation: 0,
                         hight: 48.0,
                         width: 193.0,
                         backgroundColor: AppConstants.primaryColor,
@@ -133,6 +140,7 @@ class _MyAppState extends State<MyApp> {
                       ),
                       const SizedBox(height: 15),
                       CommonElevatedButton(
+                        elevation: 0,
                         hight: 48.0,
                         width: 193.0,
                         backgroundColor: AppConstants.whiteColor,
@@ -150,6 +158,7 @@ class _MyAppState extends State<MyApp> {
                   Column(
                     children: [
                       CommonElevatedButton(
+                        elevation: 0,
                         hight: 48.0,
                         width: 274.0,
                         backgroundColor: AppConstants.primaryColor,
@@ -163,6 +172,7 @@ class _MyAppState extends State<MyApp> {
                       ),
                       const SizedBox(height: 15),
                       CommonElevatedButton(
+                        elevation: 0,
                         hight: 48.0,
                         width: 274.0,
                         backgroundColor: AppConstants.whiteColor,
@@ -178,6 +188,7 @@ class _MyAppState extends State<MyApp> {
                   ),
                   const SizedBox(height: 15),
                   CommonElevatedButton(
+                    elevation: 0,
                     hight: 48.0,
                     width: 326.0,
                     backgroundColor: AppConstants.whiteColor,

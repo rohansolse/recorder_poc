@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class CommonElevatedButton extends StatelessWidget {
   const CommonElevatedButton({
     super.key,
+    required this.elevation,
     required this.width,
     required this.hight,
     required this.backgroundColor,
@@ -15,6 +16,7 @@ class CommonElevatedButton extends StatelessWidget {
     required this.onPressed,
   });
 
+  final double elevation;
   final double width;
   final double hight;
   final Color backgroundColor;
@@ -30,7 +32,7 @@ class CommonElevatedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        elevation: 0,
+        elevation: elevation,
         padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 32),
         backgroundColor: backgroundColor,
         minimumSize: Size(width, hight),
