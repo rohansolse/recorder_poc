@@ -229,6 +229,7 @@ class _MyAppState extends State<MyApp> {
                     time: DateTime.now(),
                     status: Status.pending,
                   ),
+                  const SizedBox(height: 15),
                 ],
               ),
             ),
