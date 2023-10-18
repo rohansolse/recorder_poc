@@ -12,6 +12,7 @@ class CommonElevatedButton extends StatelessWidget {
     required this.fontFamily,
     required this.fontWeight,
     required this.borderColor,
+    required this.onPressed,
   });
 
   final double width;
@@ -23,6 +24,7 @@ class CommonElevatedButton extends StatelessWidget {
   final String text;
   final String fontFamily;
   final FontWeight fontWeight;
+  final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +39,7 @@ class CommonElevatedButton extends StatelessWidget {
           side: BorderSide(color: borderColor, width: 2),
         ),
       ),
-      onPressed: () {},
+      onPressed: onPressed,
       child: Text(
         text,
         style: TextStyle(

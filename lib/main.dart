@@ -35,6 +35,7 @@ class _MyAppState extends State<MyApp> {
                     borderColor: AppConstants.primaryColor,
                     fontFamily: AppConstants.fontFamilyRoboto,
                     fontWeight: AppConstants.fontWeight500,
+                    onPressed: () {},
                   ),
                   const SizedBox(height: 15),
                   CommonTextButton(
@@ -54,6 +55,7 @@ class _MyAppState extends State<MyApp> {
                     borderColor: AppConstants.primaryColor,
                     fontFamily: AppConstants.fontFamilyRoboto,
                     fontWeight: AppConstants.fontWeight500,
+                    onPressed: () {},
                   ),
                   const SizedBox(height: 15),
                   CommonElevatedButton(
@@ -66,6 +68,7 @@ class _MyAppState extends State<MyApp> {
                     borderColor: AppConstants.primaryColor,
                     fontFamily: AppConstants.fontFamilyRoboto,
                     fontWeight: AppConstants.fontWeight500,
+                    onPressed: () {},
                   ),
                   const SizedBox(height: 15),
                   CommonElevatedButton(
@@ -78,6 +81,7 @@ class _MyAppState extends State<MyApp> {
                     borderColor: AppConstants.primaryColor,
                     fontFamily: AppConstants.fontFamilyRoboto,
                     fontWeight: AppConstants.fontWeight500,
+                    onPressed: () {},
                   ),
                   const SizedBox(height: 15),
                   Padding(
@@ -94,6 +98,7 @@ class _MyAppState extends State<MyApp> {
                           borderColor: AppConstants.primaryColor,
                           fontFamily: AppConstants.fontFamilyRoboto,
                           fontWeight: AppConstants.fontWeight500,
+                          onPressed: () {},
                         ),
                         const SizedBox(width: 15),
                         CommonElevatedButton(
@@ -106,6 +111,7 @@ class _MyAppState extends State<MyApp> {
                           borderColor: AppConstants.primaryColor,
                           fontFamily: AppConstants.fontFamilyRoboto,
                           fontWeight: AppConstants.fontWeight500,
+                          onPressed: () {},
                         ),
                       ],
                     ),
@@ -123,6 +129,7 @@ class _MyAppState extends State<MyApp> {
                         borderColor: AppConstants.primaryColor,
                         fontFamily: AppConstants.fontFamilyRoboto,
                         fontWeight: AppConstants.fontWeight500,
+                        onPressed: () {},
                       ),
                       const SizedBox(height: 15),
                       CommonElevatedButton(
@@ -135,6 +142,7 @@ class _MyAppState extends State<MyApp> {
                         borderColor: AppConstants.primaryColor,
                         fontFamily: AppConstants.fontFamilyRoboto,
                         fontWeight: AppConstants.fontWeight500,
+                        onPressed: () {},
                       ),
                     ],
                   ),
@@ -151,6 +159,7 @@ class _MyAppState extends State<MyApp> {
                         borderColor: AppConstants.primaryColor,
                         fontFamily: AppConstants.fontFamilyRoboto,
                         fontWeight: AppConstants.fontWeight700,
+                        onPressed: () {},
                       ),
                       const SizedBox(height: 15),
                       CommonElevatedButton(
@@ -163,6 +172,7 @@ class _MyAppState extends State<MyApp> {
                         borderColor: AppConstants.primaryColor,
                         fontFamily: AppConstants.fontFamilyRoboto,
                         fontWeight: AppConstants.fontWeight700,
+                        onPressed: () {},
                       ),
                     ],
                   ),
@@ -177,6 +187,7 @@ class _MyAppState extends State<MyApp> {
                     borderColor: AppConstants.primaryColor,
                     fontFamily: AppConstants.fontFamilyRoboto,
                     fontWeight: AppConstants.fontWeight700,
+                    onPressed: () {},
                   ),
                   const SizedBox(height: 15),
                   PatientCard(
