@@ -11,12 +11,14 @@ class CommonElevatedButton extends StatelessWidget {
     required this.text,
     required this.fontFamily,
     required this.fontWeight,
+    required this.borderColor,
   });
 
   final double width;
   final double hight;
   final Color backgroundColor;
   final Color textColor;
+  final Color borderColor;
   final double fontSize;
   final String text;
   final String fontFamily;
@@ -26,21 +28,25 @@ class CommonElevatedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
+        elevation: 0,
         padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 32),
         backgroundColor: backgroundColor,
         minimumSize: Size(width, hight),
-        textStyle: TextStyle(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(50),
+          side: BorderSide(color: borderColor, width: 2),
+        ),
+      ),
+      onPressed: () {},
+      child: Text(
+        text,
+        style: TextStyle(
           color: textColor,
           fontSize: fontSize,
           fontFamily: fontFamily,
           fontWeight: fontWeight,
         ),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(100),
-        ),
       ),
-      onPressed: () {},
-      child: Text(text),
     );
   }
 }
