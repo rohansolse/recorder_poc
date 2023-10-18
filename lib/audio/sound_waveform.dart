@@ -9,8 +9,8 @@ class SoundWaveformWidget extends StatefulWidget {
   const SoundWaveformWidget({
     super.key,
     this.count = 6,
-    this.minHeight = 10,
-    this.maxHeight = 60,
+    this.minHeight = 15,
+    this.maxHeight = 95,
     this.durationInMilliseconds = 2000,
   });
 
