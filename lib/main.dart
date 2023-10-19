@@ -2,6 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:recorder_poc/audio/audio_player.dart';
 import 'package:recorder_poc/audio/audio_recorder.dart';
+import 'package:recorder_poc/audio/widgets/elevated_button_with_icon.dart';
 import 'package:recorder_poc/constants.dart';
 import 'package:recorder_poc/audio/widgets/recorders_widget.dart';
 
@@ -117,7 +118,12 @@ class _RecorderState extends State<Recorder> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                ElevatedButton(
+                ElevatedButtonWithIcon(
+                  backgroundColor: RecorderConstants.whiteColor,
+                  borderColor: showPlayer ? RecorderConstants.primaryColor : RecorderConstants.scondaryColor,
+                  buttonText: RecorderConstants.cancelRecording,
+                  buttonColor: showPlayer ? RecorderConstants.primaryColor : RecorderConstants.scondaryColor,
+                  iconLink: showPlayer ? 'assets/cancelActive.png' : 'assets/cancelInactive.png',
                   onPressed: showPlayer
                       ? () {
                           setState(() {
@@ -125,62 +131,25 @@ class _RecorderState extends State<Recorder> {
                           });
                         }
                       : () {},
-                  style: ElevatedButton.styleFrom(
-                    elevation: 0,
-                    backgroundColor: RecorderConstants.whiteColor,
-                    padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(50.0),
-                      side: showPlayer
-                          ? const BorderSide(color: RecorderConstants.primaryColor, width: 1)
-                          : const BorderSide(color: RecorderConstants.scondaryColor, width: 1),
-                    ),
-                  ),
-                  child: Row(
-                    children: [
-                      showPlayer
-                          ? Image.asset(
-                              'assets/cancelActive.png',
-                              height: 20,
-                              width: 20,
-                            )
-                          : Image.asset(
-                              'assets/cancelInactive.png',
-                              height: 20,
-                              width: 20,
-                            ),
-                      const SizedBox(width: 3),
-                      Text(
-                        RecorderConstants.cancelRecording,
-                        style: showPlayer
-                            ? const TextStyle(color: RecorderConstants.primaryColor)
-                            : const TextStyle(
-                                color: RecorderConstants.scondaryColor,
-                              ),
-                      ),
-                    ],
-                  ),
+                  fontSize: 15,
+                  fontWeight: FontWeight.w500,
+                  fontFamily: RecorderConstants.fontFamilyRoboto,
                 ),
                 const SizedBox(width: 20),
-                ElevatedButton.icon(
-                  icon: const Icon(Icons.my_library_books_rounded),
-                  label: const Text(RecorderConstants.submitRecoring),
+                ElevatedButtonWithIcon(
+                  backgroundColor: showPlayer ? RecorderConstants.primaryColor : RecorderConstants.scondaryColor,
+                  borderColor: showPlayer ? RecorderConstants.primaryColor : RecorderConstants.scondaryColor,
+                  buttonText: RecorderConstants.submitRecoring,
+                  buttonColor: RecorderConstants.whiteColor,
+                  iconLink: 'assets/submit.png',
                   onPressed: showPlayer
                       ? () {
                           submitRecoringDialog();
                         }
-                      : null,
-                  style: ElevatedButton.styleFrom(
-                    elevation: 0,
-                    backgroundColor: RecorderConstants.primaryColor,
-                    padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 15.0),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(50.0),
-                      side: showPlayer
-                          ? const BorderSide(color: RecorderConstants.primaryColor, width: 2)
-                          : const BorderSide(color: RecorderConstants.scondaryColor, width: 2),
-                    ),
-                  ),
+                      : () {},
+                  fontSize: 15,
+                  fontWeight: FontWeight.w500,
+                  fontFamily: RecorderConstants.fontFamilyRoboto,
                 ),
               ],
             ),
