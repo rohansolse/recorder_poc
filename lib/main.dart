@@ -3,7 +3,7 @@ import 'package:recorder_poc/constants.dart';
 import 'package:recorder_poc/statusEnums.dart';
 import 'package:recorder_poc/widgets/patientCard.dart';
 import 'package:recorder_poc/widgets/commonTextButton.dart';
-import 'package:recorder_poc/widgets/comonElevatedButton.dart';
+import 'package:recorder_poc/widgets/commonElevatedButton.dart';
 
 void main() => runApp(const MyApp());
 
@@ -15,6 +15,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  late bool showPlayer = false;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -37,6 +38,7 @@ class _MyAppState extends State<MyApp> {
                     fontFamily: AppConstants.fontFamilyRoboto,
                     fontWeight: AppConstants.fontWeight500,
                     onPressed: () {},
+                    iconLink: '',
                   ),
                   const SizedBox(height: 15),
                   CommonTextButton(
@@ -58,6 +60,7 @@ class _MyAppState extends State<MyApp> {
                     fontFamily: AppConstants.fontFamilyRoboto,
                     fontWeight: AppConstants.fontWeight500,
                     onPressed: () {},
+                    iconLink: '',
                   ),
                   const SizedBox(height: 15),
                   CommonElevatedButton(
@@ -72,6 +75,7 @@ class _MyAppState extends State<MyApp> {
                     fontFamily: AppConstants.fontFamilyRoboto,
                     fontWeight: AppConstants.fontWeight500,
                     onPressed: () {},
+                    iconLink: '',
                   ),
                   const SizedBox(height: 15),
                   CommonElevatedButton(
@@ -86,6 +90,106 @@ class _MyAppState extends State<MyApp> {
                     fontFamily: AppConstants.fontFamilyRoboto,
                     fontWeight: AppConstants.fontWeight500,
                     onPressed: () {},
+                    iconLink: '',
+                  ),
+                  const SizedBox(height: 15),
+                  //submit recording with icon
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                    child: Row(
+                      children: [
+                        CommonElevatedButton(
+                          elevation: 0,
+                          hight: 48.0,
+                          width: 175.19,
+                          backgroundColor: AppConstants.whiteColor,
+                          textColor: showPlayer ? AppConstants.primaryColor : AppConstants.secondaryColor,
+                          fontSize: 15.0,
+                          text: 'Cancel Recording',
+                          borderColor: showPlayer ? AppConstants.primaryColor : AppConstants.secondaryColor,
+                          fontFamily: AppConstants.fontFamilyRoboto,
+                          fontWeight: AppConstants.fontWeight500,
+                          onPressed: showPlayer
+                              ? () {
+                                  setState(() {
+                                    showPlayer = false;
+                                  });
+                                }
+                              : () {},
+                          iconLink: showPlayer ? 'assets/cancelActive.png' : 'assets/cancelInactive.png',
+                          // iconLink: '',
+                        ),
+                        const SizedBox(width: 10),
+                        CommonElevatedButton(
+                          elevation: 0,
+                          hight: 48.0,
+                          width: 175.19,
+                          backgroundColor: showPlayer ? AppConstants.primaryColor : AppConstants.secondaryColor,
+                          textColor: AppConstants.whiteColor,
+                          fontSize: 15.0,
+                          text: 'Submit Recording',
+                          borderColor: showPlayer ? AppConstants.primaryColor : AppConstants.secondaryColor,
+                          fontFamily: AppConstants.fontFamilyRoboto,
+                          fontWeight: AppConstants.fontWeight500,
+                          onPressed: showPlayer
+                              ? () {
+                                  // submitRecoringDialog();
+                                }
+                              : () {},
+                          iconLink: 'assets/submit.png',
+                          // iconLink: '',
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 15),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                    child: Row(
+                      children: [
+                        CommonElevatedButton(
+                          elevation: 0,
+                          hight: 48.0,
+                          width: 175.19,
+                          backgroundColor: AppConstants.whiteColor,
+                          textColor: !showPlayer ? AppConstants.primaryColor : AppConstants.secondaryColor,
+                          fontSize: 15.0,
+                          text: 'Cancel Recording',
+                          borderColor: !showPlayer ? AppConstants.primaryColor : AppConstants.secondaryColor,
+                          fontFamily: AppConstants.fontFamilyRoboto,
+                          fontWeight: AppConstants.fontWeight500,
+                          onPressed: !showPlayer
+                              ? () {
+                                  setState(() {
+                                    showPlayer = false;
+                                  });
+                                }
+                              : () {},
+                          iconLink: !showPlayer ? 'assets/cancelActive.png' : 'assets/cancelInactive.png',
+                          // iconLink: '',
+                        ),
+                        const SizedBox(width: 10),
+                        CommonElevatedButton(
+                          elevation: 0,
+                          hight: 48.0,
+                          width: 175.19,
+                          backgroundColor: !showPlayer ? AppConstants.primaryColor : AppConstants.secondaryColor,
+                          textColor: AppConstants.whiteColor,
+                          fontSize: 15.0,
+                          text: 'Submit Recording',
+                          borderColor: !showPlayer ? AppConstants.primaryColor : AppConstants.secondaryColor,
+                          fontFamily: AppConstants.fontFamilyRoboto,
+                          fontWeight: AppConstants.fontWeight500,
+                          onPressed: !showPlayer
+                              ? () {
+                                  // submitRecoringDialog();
+                                }
+                              : () {},
+                          iconLink: 'assets/submit.png',
+                          // iconLink: '',
+                        ),
+                      ],
+                    ),
                   ),
                   const SizedBox(height: 15),
                   Padding(
@@ -104,6 +208,7 @@ class _MyAppState extends State<MyApp> {
                           fontFamily: AppConstants.fontFamilyRoboto,
                           fontWeight: AppConstants.fontWeight500,
                           onPressed: () {},
+                          iconLink: '',
                         ),
                         const SizedBox(width: 15),
                         CommonElevatedButton(
@@ -118,6 +223,7 @@ class _MyAppState extends State<MyApp> {
                           fontFamily: AppConstants.fontFamilyRoboto,
                           fontWeight: AppConstants.fontWeight500,
                           onPressed: () {},
+                          iconLink: '',
                         ),
                       ],
                     ),
@@ -137,6 +243,7 @@ class _MyAppState extends State<MyApp> {
                         fontFamily: AppConstants.fontFamilyRoboto,
                         fontWeight: AppConstants.fontWeight500,
                         onPressed: () {},
+                        iconLink: '',
                       ),
                       const SizedBox(height: 15),
                       CommonElevatedButton(
@@ -151,6 +258,7 @@ class _MyAppState extends State<MyApp> {
                         fontFamily: AppConstants.fontFamilyRoboto,
                         fontWeight: AppConstants.fontWeight500,
                         onPressed: () {},
+                        iconLink: '',
                       ),
                     ],
                   ),
@@ -169,6 +277,7 @@ class _MyAppState extends State<MyApp> {
                         fontFamily: AppConstants.fontFamilyRoboto,
                         fontWeight: AppConstants.fontWeight700,
                         onPressed: () {},
+                        iconLink: '',
                       ),
                       const SizedBox(height: 15),
                       CommonElevatedButton(
@@ -183,6 +292,7 @@ class _MyAppState extends State<MyApp> {
                         fontFamily: AppConstants.fontFamilyRoboto,
                         fontWeight: AppConstants.fontWeight700,
                         onPressed: () {},
+                        iconLink: '',
                       ),
                     ],
                   ),
@@ -199,6 +309,7 @@ class _MyAppState extends State<MyApp> {
                     fontFamily: AppConstants.fontFamilyRoboto,
                     fontWeight: AppConstants.fontWeight700,
                     onPressed: () {},
+                    iconLink: '',
                   ),
                   const SizedBox(height: 15),
                   PatientCard(

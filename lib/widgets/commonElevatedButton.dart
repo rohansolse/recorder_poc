@@ -14,6 +14,7 @@ class CommonElevatedButton extends StatelessWidget {
     required this.fontWeight,
     required this.borderColor,
     required this.onPressed,
+    required this.iconLink,
   });
 
   final double elevation;
@@ -24,6 +25,7 @@ class CommonElevatedButton extends StatelessWidget {
   final Color borderColor;
   final double fontSize;
   final String text;
+  final String iconLink;
   final String fontFamily;
   final FontWeight fontWeight;
   final VoidCallback onPressed;
@@ -31,6 +33,7 @@ class CommonElevatedButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
+      onPressed: onPressed,
       style: ElevatedButton.styleFrom(
         elevation: elevation,
         padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 32),
@@ -41,16 +44,35 @@ class CommonElevatedButton extends StatelessWidget {
           side: BorderSide(color: borderColor, width: 2),
         ),
       ),
-      onPressed: onPressed,
-      child: Text(
-        text,
-        style: TextStyle(
-          color: textColor,
-          fontSize: fontSize,
-          fontFamily: fontFamily,
-          fontWeight: fontWeight,
-        ),
-      ),
+      child: iconLink.isNotEmpty
+          ? Row(
+              children: [
+                Image.asset(
+                  iconLink,
+                  height: 20,
+                  width: 20,
+                ),
+                const SizedBox(width: 3),
+                Text(
+                  text,
+                  style: TextStyle(
+                    color: textColor,
+                    fontSize: fontSize,
+                    fontFamily: fontFamily,
+                    fontWeight: fontWeight,
+                  ),
+                ),
+              ],
+            )
+          : Text(
+              text,
+              style: TextStyle(
+                color: textColor,
+                fontSize: fontSize,
+                fontFamily: fontFamily,
+                fontWeight: fontWeight,
+              ),
+            ),
     );
   }
 }
