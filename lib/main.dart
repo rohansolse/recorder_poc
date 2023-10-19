@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:recorder_poc/constants.dart';
-import 'package:recorder_poc/statusEnums.dart';
-import 'package:recorder_poc/widgets/patientCard.dart';
-import 'package:recorder_poc/widgets/commonTextButton.dart';
-import 'package:recorder_poc/widgets/commonElevatedButton.dart';
+import 'package:recorder_poc/status_enums.dart';
+import 'package:recorder_poc/widgets/common_text_field.dart';
+import 'package:recorder_poc/widgets/patient_card.dart';
+import 'package:recorder_poc/widgets/common_text_button.dart';
+import 'package:recorder_poc/widgets/common_elevated_button.dart';
 
 void main() => runApp(const MyApp());
 
@@ -93,7 +94,6 @@ class _MyAppState extends State<MyApp> {
                     iconLink: '',
                   ),
                   const SizedBox(height: 15),
-                  //submit recording with icon
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10.0),
                     child: Row(
@@ -117,7 +117,6 @@ class _MyAppState extends State<MyApp> {
                                 }
                               : () {},
                           iconLink: showPlayer ? 'assets/cancelActive.png' : 'assets/cancelInactive.png',
-                          // iconLink: '',
                         ),
                         const SizedBox(width: 10),
                         CommonElevatedButton(
@@ -137,10 +136,31 @@ class _MyAppState extends State<MyApp> {
                                 }
                               : () {},
                           iconLink: 'assets/submit.png',
-                          // iconLink: '',
                         ),
                       ],
                     ),
+                  ),
+                  const SizedBox(height: 15),
+                  const CommonTextField(
+                    richText: 'Baptist Email Address',
+                    textSpan: '*',
+                    width: 350,
+                    height: 48,
+                    labelText: 'Ex: manolo@gmail.com',
+                  ),
+                  const CommonTextField(
+                    richText: 'Password',
+                    textSpan: '*',
+                    width: 350,
+                    height: 48,
+                    labelText: '************',
+                  ),
+                  const CommonTextField(
+                    richText: 'Patient Name',
+                    textSpan: '',
+                    width: 350,
+                    height: 48,
+                    labelText: '',
                   ),
                   const SizedBox(height: 15),
                   Padding(
@@ -166,7 +186,6 @@ class _MyAppState extends State<MyApp> {
                                 }
                               : () {},
                           iconLink: !showPlayer ? 'assets/cancelActive.png' : 'assets/cancelInactive.png',
-                          // iconLink: '',
                         ),
                         const SizedBox(width: 10),
                         CommonElevatedButton(
@@ -186,7 +205,6 @@ class _MyAppState extends State<MyApp> {
                                 }
                               : () {},
                           iconLink: 'assets/submit.png',
-                          // iconLink: '',
                         ),
                       ],
                     ),

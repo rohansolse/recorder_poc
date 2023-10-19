@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:recorder_poc/constants.dart';
-import 'package:recorder_poc/statusEnums.dart';
+import 'package:recorder_poc/status_enums.dart';
 
 class PatientCard extends StatelessWidget {
   const PatientCard({

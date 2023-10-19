@@ -20,4 +20,6 @@ class AppConstants {
   static const pendingTextColor = Color.fromRGBO(223, 102, 10, 1);
   static const rejectedBgColor = Color.fromRGBO(255, 238, 237, 1);
   static const rejectedTextColor = Color.fromRGBO(205, 60, 50, 1);
+  static const labelTextColor = Color.fromRGBO(160, 160, 160, 1);
+  static const textFieldColor = Color.fromRGBO(210, 210, 210, 1);
 }
