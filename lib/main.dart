@@ -1,4 +1,7 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
+import 'custom_dialog.dart';
 
 void main() => runApp(const MyApp());
 
@@ -8,7 +11,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Boilerplate',
+      title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -23,11 +26,22 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Flutter Boilerplate Home'),
-      ),
-      body: const Center(
-        child: Text('Hello, Flutter!'),
+      appBar: AppBar(title: const Text('Custom Dialog Example')),
+      body: Center(
+        child: ElevatedButton(
+          child: const Text('Show Custom Dialog'),
+          onPressed: () {
+            showDialog(
+              context: context,
+              builder: (context) => CustomDialog(
+                title: "This is a custom dialog",
+                message: "You can add any message here.",
+                onFirstButtonPressed: () {},
+                onSecondButtonPressed: () {},
+              ),
+            );
+          },
+        ),
       ),
     );
   }
