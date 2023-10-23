@@ -26,7 +26,9 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Custom Dialog Example')),
+      appBar: AppBar(
+        title: const Text('Custom Dialog Example'),
+      ),
       body: Center(
         child: ElevatedButton(
           child: const Text('Show Custom Dialog'),
