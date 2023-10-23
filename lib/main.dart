@@ -5,7 +5,6 @@ import 'package:recorder_poc/widgets/common_text_field.dart';
 import 'package:recorder_poc/widgets/patient_card.dart';
 import 'package:recorder_poc/widgets/common_text_button.dart';
 import 'package:recorder_poc/widgets/common_elevated_button.dart';
-import 'package:recorder_poc/widgets/show_common_sheet.dart';
 
 void main() => runApp(const MyApp());
 
@@ -52,21 +51,6 @@ class _MyAppState extends State<MyApp> {
                     textColor: AppConstants.primaryColor,
                   ),
                   const SizedBox(height: 15),
-                  // we dont have such button in our code not just use this for demo
-                  ElevatedButton(
-                    onPressed: () {
-                      showBottomSheetWidget(context);
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: AppConstants.primaryColor,
-                      minimumSize: const Size(175.19, 48.0),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50),
-                        side: const BorderSide(color: AppConstants.primaryColor, width: 2),
-                      ),
-                    ),
-                    child: const Text('Show Bottom Sheet'),
-                  ),
                   const SizedBox(height: 15),
                   CommonElevatedButton(
                     elevation: 0,
