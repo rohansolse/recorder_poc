@@ -110,28 +110,7 @@ void showBottomSheetWidget(BuildContext context) {
                     },
                   ),
                 ),
-                // Row(
-                //   mainAxisAlignment: MainAxisAlignment.spaceAround,
-                //   children: [
-                //     ElevatedButton(
-                //       child: const Text('Reset'),
-                //       onPressed: () {
-                //         state(() {
-                //           for (var item in items) {
-                //             item.checked = false;
-                //           }
-                //         });
-                //       },
-                //     ),
-                //     ElevatedButton(
-                //       child: const Text('Submit'),
-                //       onPressed: () {
-                //         Navigator.pop(context);
-                //         // Handle your logic on submit here
-                //       },
-                //     ),
-                //   ],
-                // ),
+                const SizedBox(height: 15),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 40.0),
                   child: Row(
@@ -176,6 +155,7 @@ void showBottomSheetWidget(BuildContext context) {
                     ],
                   ),
                 ),
+                const SizedBox(height: 25),
               ],
             ),
           );

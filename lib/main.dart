@@ -5,17 +5,34 @@ import 'package:recorder_poc/widgets/common_text_field.dart';
 import 'package:recorder_poc/widgets/patient_card.dart';
 import 'package:recorder_poc/widgets/common_text_button.dart';
 import 'package:recorder_poc/widgets/common_elevated_button.dart';
+import 'package:recorder_poc/widgets/show_common_sheet.dart';
 
 void main() => runApp(const MyApp());
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
-  State<MyApp> createState() => _MyAppState();
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Bottom Sheet with Checklist',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: const MyHomePage(),
+    );
+  }
 }
 
-class _MyAppState extends State<MyApp> {
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key});
+
+  @override
+  // ignore: library_private_types_in_public_api
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
   late bool showPlayer = false;
   @override
   Widget build(BuildContext context) {
@@ -65,6 +82,21 @@ class _MyAppState extends State<MyApp> {
                     fontWeight: AppConstants.fontWeight500,
                     onPressed: () {},
                     iconLink: '',
+                  ),
+                  const SizedBox(height: 15),
+                  ElevatedButton(
+                    onPressed: () {
+                      showBottomSheetWidget(context);
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: AppConstants.primaryColor,
+                      minimumSize: const Size(175.19, 48.0),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(50),
+                        side: const BorderSide(color: AppConstants.primaryColor, width: 2),
+                      ),
+                    ),
+                    child: const Text('Show Bottom Sheet'),
                   ),
                   const SizedBox(height: 15),
                   CommonElevatedButton(
