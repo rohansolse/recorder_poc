@@ -1,0 +1,55 @@
+// ignore_for_file: constant_identifier_names
+
+class AnalyticsConstants {
+  static const String PCP_BOOKING = 'pcp_booking';
+  static const String SCHEDULE_APPT = 'schedule_appointment';
+  static const String SCHEDULE_ENDO_APPT = 'schedule_endocrinology_appointment';
+  static const String SCHEDULE_APPT_ACTION = 'pcp_appointment_request';
+  static const String ORTHO_SPORT_MED = 'ortho_sport_medicine';
+  static const String HOME_QUICK_LINKS = 'home_quick_links';
+  static const String ORTHO_SPORT_MED_ACTION = 'ortho_sport_med_invoked';
+  static const String ENDO_MED = 'endocrinology';
+  static const String ENDO_MED_ACTION = 'endocrinology_invoked';
+  static const String ORTHO_BOOKING = 'ortho_booking';
+  static const String VIRTUAL = 'virtual';
+  static const String PCP_BOOKING_PA = 'pcp_booking_pa';
+  static const String PCP_BOOKING_APRN = 'pcp_booking_aprn';
+  static const String APRN = 'APRN';
+  static const String PA = 'PA';
+  static const String DIAGNOSTIC_APPT = 'diagnostic_appointment';
+  static const HEALTH_RECORDS_ALLERGIES = 'health_records_allergies';
+  static const HEALTH_RECORDS_HEALTH_CONDITIONS = 'health_records_health_conditions';
+  static const HEALTH_RECORDS_IMMUNIZATION = 'health_records_immunizations';
+  static const String DIAGNOSTIC_APPT_ACTION = 'diagnostic_appt_initialized';
+  static const String MAMMO_APPT = 'mammography_appointment';
+  static const String ENDO_APPT = 'endocrinology_appointment';
+  static const ENDO_ANALYTIC = 'endo_';
+  static const String NA = 'NA';
+  static const String FLOW_COLON_PREFIX_DETAILS = 'flow:';
+  static const String SCREEN_COLON_PREFIX_DETAILS = 'screen:';
+  static const String PRIMARY_MENU_INSURANCE = 'primary_menu_insurance';
+  static const String SEARCH_SCREEN = 'search_page';
+  static const String HOME_SCREEN = 'home_screen';
+  static const String HOME_SCREEN_CROSS_POP_UP = 'home_screen_cross_popup';
+  static const String HOME_SCREEN_POP_UP = 'home_screen_popup';
+  static const String HOME_POPUP_SHEET_MENU_LINK = 'home_popup_sheet_menu_link';
+  static const String HOME_MENU_LINK = 'home_menu_link';
+  static const String PRE_ARRIVAL = 'pre_arrival';
+  static const String PRE_ARRIVAL_ACTION = 'urgent_care_pre_arrival_invoked';
+  static const String UC_ACTION = 'urgent_care_invoked';
+  static const String UC_ON_TAP = 'Go to urgent care - my spot';
+  static const String UC_CI_ON_TAP = 'Go to urgent care - check in';
+  static const String GLOBAL_SEARCH_SCREEN = 'global_search';
+  static const String POPULAR_SEARCH = 'popular_search';
+  static const String POPULAR_SEARCH_ENTRY_POINT = 'popular_searches';
+  static const String GO_TO_MAMMO_SCHEDULE = 'Go to schedule a mammogram screening - Home Menu sticky';
+  static const String GO_TO_VIRTUAL_VISIT = 'Go to Virtual Visit - Welcome Page';
+  static const String BAPTIST_PCP_PROVIDER_ON_FILE = 'baptist_pcp_provider_on_file';
+  static const String NON_BAPTIST_PCP_PROVIDER_ON_FILE = 'non_baptist_pcp_provider_on_file';
+  static const String MODAL_BOTTOM_SHEET_OPTIONS = 'modal_bottom_sheet_options';
+  static const String BOOK_APPOINTMENT_ERROR = 'book_appointment_error';
+  static const String CARE_GUIDANCE = 'care_guidance';
+  static const String CARE_GUIDANCE_ACTION_SELECTED = 'care_guidance_selected';
+  static const String PAY_MY_BILL = 'pay_my_bill';
+  static const String PAY_MY_BILL_ACTION_TAP = 'pay_my_bill_tap';
+}

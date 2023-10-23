@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:recorder_poc/generic_bottom_sheet_theme.dart';
 import 'package:recorder_poc/line_separator_widget.dart';
 import 'package:recorder_poc/list_tile.dart';
-import 'package:recorder_poc/pine_app_localization.dart';
 import 'package:recorder_poc/pine_palette.dart';
 import 'package:recorder_poc/text.dart';
 import 'package:recorder_poc/text_theme.dart';
@@ -28,69 +27,69 @@ class GenericBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _lang = PineAppLocalization.of(context);
     genericBottomSheetModel.options.removeWhere((element) => element.isVisible == false);
     return SafeArea(
-        key: GenericBottomSheetTheme.BOTTOM_SHEET_KEY,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Padding(
-              padding: GenericBottomSheetTheme.SUB_SHEET_TITLE_PADDING,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  PineText(
-                    text: _lang.localized('${genericBottomSheetModel.title}'),
-                    textType: PineTextTypes.HEADING,
-                  ),
-                  genericBottomSheetModel.shouldHaveCloseIcon
-                      ? Container(
-                          decoration: GenericBottomSheetTheme.CROSS_ICON_DECORATION,
-                          child: IconButton(
-                            icon: const Icon(
-                              Icons.close,
-                              size: GenericBottomSheetTheme.CROSS_ICON_SIZE,
-                              color: PinePalette.lightGreenNew,
-                            ),
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
+      key: GenericBottomSheetTheme.BOTTOM_SHEET_KEY,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Padding(
+            padding: GenericBottomSheetTheme.SUB_SHEET_TITLE_PADDING,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                PineText(
+                  text: genericBottomSheetModel.title,
+                  textType: PineTextTypes.HEADING,
+                ),
+                genericBottomSheetModel.shouldHaveCloseIcon
+                    ? Container(
+                        decoration: GenericBottomSheetTheme.CROSS_ICON_DECORATION,
+                        child: IconButton(
+                          icon: const Icon(
+                            Icons.close,
+                            size: GenericBottomSheetTheme.CROSS_ICON_SIZE,
+                            color: PinePalette.lightGreenNew,
                           ),
-                        )
-                      : const SizedBox.shrink()
-                ],
-              ),
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                        ),
+                      )
+                    : const SizedBox.shrink()
+              ],
             ),
-            ListView.separated(
-              key: Key('bottom-sheet-specialist-${genericBottomSheetModel.title}'),
-              physics: const NeverScrollableScrollPhysics(),
-              shrinkWrap: true,
-              padding: GenericBottomSheetTheme.LISTVIEW_PADDING,
-              itemCount: genericBottomSheetModel.options.length,
-              separatorBuilder: (BuildContext context, _) {
-                return const LineSeparatorWidget(
-                  height: GenericBottomSheetTheme.LINE_SEPARATOR_HEIGHT,
-                );
-              },
-              itemBuilder: (BuildContext context, int index) {
-                final options = genericBottomSheetModel.options[index];
-                if (!options.isVisible) {
-                  return const SizedBox.shrink();
-                }
-                return PineListTile(
-                  key: Key('${options.key}'),
-                  icon: options.leadingIcon,
-                  title: _lang.localized('${options.title}'),
-                  subTitle: _lang.localized('${options.subtitle}'),
-                  trailingIcon: options.trailingIcon,
-                  onTap: options.onTap,
-                  hasSeparator: true,
-                );
-              },
-            ),
-          ],
-        ));
+          ),
+          ListView.separated(
+            key: Key('bottom-sheet-specialist-${genericBottomSheetModel.title}'),
+            physics: const NeverScrollableScrollPhysics(),
+            shrinkWrap: true,
+            padding: GenericBottomSheetTheme.LISTVIEW_PADDING,
+            itemCount: genericBottomSheetModel.options.length,
+            separatorBuilder: (BuildContext context, _) {
+              return const LineSeparatorWidget(
+                height: GenericBottomSheetTheme.LINE_SEPARATOR_HEIGHT,
+              );
+            },
+            itemBuilder: (BuildContext context, int index) {
+              final options = genericBottomSheetModel.options[index];
+              if (!options.isVisible) {
+                return const SizedBox.shrink();
+              }
+              return PineListTile(
+                key: Key('${options.key}'),
+                icon: options.leadingIcon,
+                title: options.title,
+                subTitle: '${options.subtitle}',
+                trailingIcon: options.trailingIcon,
+                onTap: options.onTap,
+                hasSeparator: true,
+              );
+            },
+          ),
+        ],
+      ),
+    );
   }
 }
 
