@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:recorder_poc/common_elevated_button.dart';
+import 'package:recorder_poc/constants.dart';
+import 'package:recorder_poc/list_data.dart';
 
 void showBottomSheetWidget(BuildContext context) {
-  List<Item> items = List.generate(5, (index) => Item('Item $index', false));
   final TextEditingController searchController = TextEditingController();
   showModalBottomSheet(
     context: context,
@@ -108,28 +110,44 @@ void showBottomSheetWidget(BuildContext context) {
                     },
                   ),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    ElevatedButton(
-                      child: const Text('Reset'),
-                      onPressed: () {
-                        state(() {
-                          for (var item in items) {
-                            item.checked = false;
-                          }
-                        });
-                      },
-                    ),
-                    ElevatedButton(
-                      child: const Text('Submit'),
-                      onPressed: () {
-                        Navigator.pop(context);
-                        // Handle your logic on submit here
-                      },
-                    ),
-                  ],
+                const SizedBox(height: 25),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 40.0),
+                  child: Row(
+                    children: [
+                      CommonElevatedButton(
+                        elevation: 0,
+                        hight: 48.0,
+                        width: 159.0,
+                        backgroundColor: AppConstants.whiteColor,
+                        textColor: AppConstants.primaryColor,
+                        fontSize: 16.0,
+                        text: 'Reset Filters',
+                        borderColor: AppConstants.primaryColor,
+                        fontFamily: AppConstants.fontFamilyRoboto,
+                        fontWeight: AppConstants.fontWeight500,
+                        onPressed: () {},
+                        iconLink: '',
+                      ),
+                      const SizedBox(width: 15),
+                      CommonElevatedButton(
+                        elevation: 0,
+                        hight: 48.0,
+                        width: 159.0,
+                        backgroundColor: AppConstants.primaryColor,
+                        textColor: AppConstants.whiteColor,
+                        fontSize: 16.0,
+                        text: 'Apply Filters',
+                        borderColor: AppConstants.primaryColor,
+                        fontFamily: AppConstants.fontFamilyRoboto,
+                        fontWeight: AppConstants.fontWeight500,
+                        onPressed: () {},
+                        iconLink: '',
+                      ),
+                    ],
+                  ),
                 ),
+                const SizedBox(height: 25),
               ],
             ),
           );
@@ -137,11 +155,4 @@ void showBottomSheetWidget(BuildContext context) {
       );
     },
   );
-}
-
-class Item {
-  String title;
-  bool checked;
-
-  Item(this.title, this.checked);
 }
