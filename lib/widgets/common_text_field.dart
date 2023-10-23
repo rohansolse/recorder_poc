@@ -33,7 +33,13 @@ class _CommonTextFieldState extends State<CommonTextField> {
         children: [
           RichTextWidget(
             text: widget.richText,
+            textColor: Colors.black,
+            textFontWeight: FontWeight.w700,
+            textFontFamily: AppConstants.fontFamilyRoboto,
+            textFontSize: 16.0,
             textSpan: widget.textSpan,
+            textSpanWeight: FontWeight.bold,
+            textSpanColor: AppConstants.rejectedTextColor,
           ),
           const SizedBox(height: 5),
           SizedBox(

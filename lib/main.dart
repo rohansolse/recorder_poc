@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:recorder_poc/constants.dart';
 import 'package:recorder_poc/status_enums.dart';
+import 'package:recorder_poc/widgets/common_dialog_box.dart';
 import 'package:recorder_poc/widgets/common_text_field.dart';
 import 'package:recorder_poc/widgets/patient_card.dart';
 import 'package:recorder_poc/widgets/common_text_button.dart';
@@ -82,6 +83,54 @@ class _MyHomePageState extends State<MyHomePage> {
                     fontWeight: AppConstants.fontWeight500,
                     onPressed: () {},
                     iconLink: '',
+                  ),
+                  const SizedBox(height: 15),
+                  ElevatedButton(
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) => const ShowDialogWidget(
+                          iconlink: 'assets/mikeIcon.png',
+                          titleText: AppConstants.submitRecordingWithQuestion,
+                          text: AppConstants.areYouDone,
+                          firstButtonText: AppConstants.submitRecoring,
+                          secondButtonText: AppConstants.cancel,
+                        ),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: AppConstants.primaryColor,
+                      minimumSize: const Size(235.0, 48.0),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(50),
+                        side: const BorderSide(color: AppConstants.primaryColor, width: 2),
+                      ),
+                    ),
+                    child: const Text('Show Submit Recording Dialog'),
+                  ),
+                  const SizedBox(height: 15),
+                  ElevatedButton(
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) => const ShowDialogWidget(
+                          iconlink: 'assets/approve.png',
+                          titleText: AppConstants.approveSummary,
+                          text: AppConstants.approveSummaryContent,
+                          firstButtonText: AppConstants.approveSummary,
+                          secondButtonText: AppConstants.rejectSummary,
+                        ),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: AppConstants.primaryColor,
+                      minimumSize: const Size(235.0, 48.0),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(50),
+                        side: const BorderSide(color: AppConstants.primaryColor, width: 2),
+                      ),
+                    ),
+                    child: const Text('Show Approve Summary Dialog'),
                   ),
                   const SizedBox(height: 15),
                   ElevatedButton(
