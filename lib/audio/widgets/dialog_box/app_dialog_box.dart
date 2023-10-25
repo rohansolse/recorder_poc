@@ -98,21 +98,21 @@ class AppDialogBox extends StatelessWidget {
               if (richText)
                 Center(
                   child: RichText(
-                    text: const TextSpan(
-                      text: 'This will generate a ',
-                      style: TextStyle(
+                    text: TextSpan(
+                      text: richtextTitle,
+                      style: const TextStyle(
                         color: AppColor.textPrimaryColor,
-                        fontSize: 15,
-                        fontFamily: 'Roboto',
+                        fontSize: AppDialogBoxTheme.richTextFontSize,
+                        fontFamily: AppDialogBoxTheme.richTextFontFamily,
                       ),
                       children: [
                         TextSpan(
-                          text: 'Visit Summary Document',
-                          style: TextStyle(
+                          text: textSpan,
+                          style: const TextStyle(
                             color: AppColor.dialogTitle,
-                            fontSize: 15,
-                            fontFamily: 'Roboto',
-                            fontWeight: FontWeight.w700,
+                            fontSize: AppDialogBoxTheme.richTextFontSize,
+                            fontFamily: AppDialogBoxTheme.richTextFontFamily,
+                            fontWeight: AppDialogBoxTheme.richTextFontWeight,
                           ),
                         ),
                       ],

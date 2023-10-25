@@ -6,13 +6,13 @@ import 'package:recorder_poc/widgets/common_rich_text.dart';
 class ShowDialogWidget extends StatelessWidget {
   const ShowDialogWidget({
     super.key,
-    required this.iconlink,
+    required this.icon,
     required this.text,
     required this.titleText,
     required this.firstButtonText,
     required this.secondButtonText,
   });
-  final String iconlink;
+  final String icon;
   final String text;
   final String titleText;
   final String firstButtonText;
@@ -31,7 +31,7 @@ class ShowDialogWidget extends StatelessWidget {
           children: [
             const SizedBox(height: 30),
             Image.asset(
-              iconlink,
+              icon,
               width: 65,
               height: 65,
             ),
@@ -86,7 +86,7 @@ class ShowDialogWidget extends StatelessWidget {
                   fontFamily: AppConstants.fontFamilyRoboto,
                   fontSize: 16,
                   fontWeight: AppConstants.fontWeight700,
-                  iconLink: '',
+                  icon: '',
                 ),
                 const SizedBox(height: 10),
                 CommonElevatedButton(
@@ -103,7 +103,7 @@ class ShowDialogWidget extends StatelessWidget {
                   fontFamily: AppConstants.fontFamilyRoboto,
                   fontSize: 16,
                   fontWeight: AppConstants.fontWeight700,
-                  iconLink: '',
+                  icon: '',
                 ),
               ],
             ),

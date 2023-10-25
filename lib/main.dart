@@ -59,7 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     fontFamily: AppConstants.fontFamilyRoboto,
                     fontWeight: AppConstants.fontWeight500,
                     onPressed: () {},
-                    iconLink: '',
+                    icon: '',
                   ),
                   const SizedBox(height: 15),
                   CommonTextButton(
@@ -83,7 +83,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     fontFamily: AppConstants.fontFamilyRoboto,
                     fontWeight: AppConstants.fontWeight500,
                     onPressed: () {},
-                    iconLink: '',
+                    icon: '',
                   ),
                   const SizedBox(height: 15),
                   ElevatedButton(
@@ -91,7 +91,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       showDialog(
                         context: context,
                         builder: (context) => const ShowDialogWidget(
-                          iconlink: 'assets/mikeIcon.png',
+                          icon: 'assets/mikeIcon.png',
                           titleText: AppConstants.submitRecordingWithQuestion,
                           text: AppConstants.areYouDone,
                           firstButtonText: AppConstants.submitRecoring,
@@ -124,8 +124,8 @@ class _MyHomePageState extends State<MyHomePage> {
                           Navigator.pop(context);
                         },
                         richText: true,
-                        richtextTitle: '',
-                        textSpan: '',
+                        richtextTitle: 'This will generate a ',
+                        textSpan: 'Visit Summary Document',
                       );
                     },
                     child: const Text('Show 1st Dialog'),
@@ -154,7 +154,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       showDialog(
                         context: context,
                         builder: (context) => const ShowDialogWidget(
-                          iconlink: 'assets/approve.png',
+                          icon: 'assets/approve.png',
                           titleText: AppConstants.approveSummary,
                           text: AppConstants.approveSummaryContent,
                           firstButtonText: AppConstants.approveSummary,
@@ -200,7 +200,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     fontFamily: AppConstants.fontFamilyRoboto,
                     fontWeight: AppConstants.fontWeight500,
                     onPressed: () {},
-                    iconLink: '',
+                    icon: '',
                   ),
                   const SizedBox(height: 15),
                   CommonElevatedButton(
@@ -215,7 +215,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     fontFamily: AppConstants.fontFamilyRoboto,
                     fontWeight: AppConstants.fontWeight500,
                     onPressed: () {},
-                    iconLink: '',
+                    icon: '',
                   ),
                   const SizedBox(height: 15),
                   // Padding(
@@ -240,7 +240,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   //                 });
                   //               }
                   //             : () {},
-                  //         iconLink: showPlayer ? 'assets/cancelActive.png' : 'assets/cancelInactive.png',
+                  //         icon: showPlayer ? 'assets/cancelActive.png' : 'assets/cancelInactive.png',
                   //       ),
                   //       const SizedBox(width: 10),
                   //       CommonElevatedButton(
@@ -259,7 +259,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   //                 // submitRecoringDialog();
                   //               }
                   //             : () {},
-                  //         iconLink: 'assets/submit.png',
+                  //         icon: 'assets/submit.png',
                   //       ),
                   //     ],
                   //   ),
@@ -309,7 +309,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   //                 });
                   //               }
                   //             : () {},
-                  //         iconLink: !showPlayer ? 'assets/cancelActive.png' : 'assets/cancelInactive.png',
+                  //         icon: !showPlayer ? 'assets/cancelActive.png' : 'assets/cancelInactive.png',
                   //       ),
                   //       const SizedBox(width: 10),
                   //       CommonElevatedButton(
@@ -328,7 +328,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   //                 // submitRecoringDialog();
                   //               }
                   //             : () {},
-                  //         iconLink: 'assets/submit.png',
+                  //         icon: 'assets/submit.png',
                   //       ),
                   //     ],
                   //   ),
@@ -350,7 +350,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   //         fontFamily: AppConstants.fontFamilyRoboto,
                   //         fontWeight: AppConstants.fontWeight500,
                   //         onPressed: () {},
-                  //         iconLink: '',
+                  //         icon: '',
                   //       ),
                   //       const SizedBox(width: 15),
                   //       CommonElevatedButton(
@@ -365,7 +365,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   //         fontFamily: AppConstants.fontFamilyRoboto,
                   //         fontWeight: AppConstants.fontWeight500,
                   //         onPressed: () {},
-                  //         iconLink: '',
+                  //         icon: '',
                   //       ),
                   //     ],
                   //   ),
@@ -385,7 +385,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         fontFamily: AppConstants.fontFamilyRoboto,
                         fontWeight: AppConstants.fontWeight500,
                         onPressed: () {},
-                        iconLink: '',
+                        icon: '',
                       ),
                       const SizedBox(height: 15),
                       CommonElevatedButton(
@@ -400,7 +400,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         fontFamily: AppConstants.fontFamilyRoboto,
                         fontWeight: AppConstants.fontWeight500,
                         onPressed: () {},
-                        iconLink: '',
+                        icon: '',
                       ),
                     ],
                   ),
@@ -419,7 +419,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         fontFamily: AppConstants.fontFamilyRoboto,
                         fontWeight: AppConstants.fontWeight700,
                         onPressed: () {},
-                        iconLink: '',
+                        icon: '',
                       ),
                       const SizedBox(height: 15),
                       CommonElevatedButton(
@@ -434,7 +434,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         fontFamily: AppConstants.fontFamilyRoboto,
                         fontWeight: AppConstants.fontWeight700,
                         onPressed: () {},
-                        iconLink: '',
+                        icon: '',
                       ),
                     ],
                   ),
@@ -451,7 +451,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     fontFamily: AppConstants.fontFamilyRoboto,
                     fontWeight: AppConstants.fontWeight700,
                     onPressed: () {},
-                    iconLink: '',
+                    icon: '',
                   ),
                   const SizedBox(height: 15),
                   PatientCard(

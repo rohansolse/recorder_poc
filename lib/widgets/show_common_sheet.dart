@@ -133,7 +133,7 @@ void showBottomSheetWidget(BuildContext context) {
                             }
                           });
                         },
-                        iconLink: '',
+                        icon: '',
                       ),
                       const SizedBox(width: 15),
                       CommonElevatedButton(
@@ -150,7 +150,7 @@ void showBottomSheetWidget(BuildContext context) {
                         onPressed: () {
                           Navigator.pop(context);
                         },
-                        iconLink: '',
+                        icon: '',
                       ),
                     ],
                   ),

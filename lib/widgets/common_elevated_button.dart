@@ -14,7 +14,7 @@ class CommonElevatedButton extends StatelessWidget {
     required this.fontWeight,
     required this.borderColor,
     required this.onPressed,
-    required this.iconLink,
+    required this.icon,
   });
 
   final double elevation;
@@ -25,7 +25,7 @@ class CommonElevatedButton extends StatelessWidget {
   final Color borderColor;
   final double fontSize;
   final String text;
-  final String iconLink;
+  final String icon;
   final String fontFamily;
   final FontWeight fontWeight;
   final VoidCallback onPressed;
@@ -44,11 +44,11 @@ class CommonElevatedButton extends StatelessWidget {
           side: BorderSide(color: borderColor, width: 2),
         ),
       ),
-      child: iconLink.isNotEmpty
+      child: icon.isNotEmpty
           ? Row(
               children: [
                 Image.asset(
-                  iconLink,
+                  icon,
                   height: 20,
                   width: 20,
                 ),
