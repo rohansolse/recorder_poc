@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recorder_poc/audio/widgets/dialog_box/app_dialog_box.dart';
 import 'package:recorder_poc/constants.dart';
 import 'package:recorder_poc/status_enums.dart';
 import 'package:recorder_poc/widgets/common_dialog_box.dart';
@@ -110,6 +111,41 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   const SizedBox(height: 15),
                   ElevatedButton(
+                    // padding
+                    onPressed: () {
+                      AppDialogBox.showAppDialogBox(
+                        context: context,
+                        icon: 'assets/mike.png',
+                        title: 'Submit Recording?',
+                        text: 'Are you done with recording the conversation?',
+                        approveButtonText: 'Submit Recording',
+                        cancelButtonText: 'Cancel',
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                      );
+                    },
+                    child: const Text('Show 1st Dialog'),
+                  ),
+
+                  const SizedBox(height: 15),
+                  ElevatedButton(
+                      onPressed: () {
+                        AppDialogBox.showAppDialogBox(
+                          context: context,
+                          icon: 'assets/approve.png',
+                          title: 'Approve Summary',
+                          text: 'Score the summary and decide whether you approve or reject it.',
+                          approveButtonText: 'Approve Summary',
+                          cancelButtonText: 'Reject Summary',
+                          onTap: () {
+                            Navigator.pop(context);
+                          },
+                        );
+                      },
+                      child: const Text('Show 2nd Dialog')),
+                  const SizedBox(height: 15),
+                  ElevatedButton(
                     onPressed: () {
                       showDialog(
                         context: context,
@@ -178,52 +214,52 @@ class _MyHomePageState extends State<MyHomePage> {
                     iconLink: '',
                   ),
                   const SizedBox(height: 15),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                    child: Row(
-                      children: [
-                        CommonElevatedButton(
-                          elevation: 0,
-                          hight: 48.0,
-                          width: 175.19,
-                          backgroundColor: AppConstants.whiteColor,
-                          textColor: showPlayer ? AppConstants.primaryColor : AppConstants.secondaryColor,
-                          fontSize: 15.0,
-                          text: 'Cancel Recording',
-                          borderColor: showPlayer ? AppConstants.primaryColor : AppConstants.secondaryColor,
-                          fontFamily: AppConstants.fontFamilyRoboto,
-                          fontWeight: AppConstants.fontWeight500,
-                          onPressed: showPlayer
-                              ? () {
-                                  setState(() {
-                                    showPlayer = false;
-                                  });
-                                }
-                              : () {},
-                          iconLink: showPlayer ? 'assets/cancelActive.png' : 'assets/cancelInactive.png',
-                        ),
-                        const SizedBox(width: 10),
-                        CommonElevatedButton(
-                          elevation: 0,
-                          hight: 48.0,
-                          width: 175.19,
-                          backgroundColor: showPlayer ? AppConstants.primaryColor : AppConstants.secondaryColor,
-                          textColor: AppConstants.whiteColor,
-                          fontSize: 15.0,
-                          text: 'Submit Recording',
-                          borderColor: showPlayer ? AppConstants.primaryColor : AppConstants.secondaryColor,
-                          fontFamily: AppConstants.fontFamilyRoboto,
-                          fontWeight: AppConstants.fontWeight500,
-                          onPressed: showPlayer
-                              ? () {
-                                  // submitRecoringDialog();
-                                }
-                              : () {},
-                          iconLink: 'assets/submit.png',
-                        ),
-                      ],
-                    ),
-                  ),
+                  // Padding(
+                  //   padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                  //   child: Row(
+                  //     children: [
+                  //       CommonElevatedButton(
+                  //         elevation: 0,
+                  //         hight: 48.0,
+                  //         width: 175.19,
+                  //         backgroundColor: AppConstants.whiteColor,
+                  //         textColor: showPlayer ? AppConstants.primaryColor : AppConstants.secondaryColor,
+                  //         fontSize: 15.0,
+                  //         text: 'Cancel Recording',
+                  //         borderColor: showPlayer ? AppConstants.primaryColor : AppConstants.secondaryColor,
+                  //         fontFamily: AppConstants.fontFamilyRoboto,
+                  //         fontWeight: AppConstants.fontWeight500,
+                  //         onPressed: showPlayer
+                  //             ? () {
+                  //                 setState(() {
+                  //                   showPlayer = false;
+                  //                 });
+                  //               }
+                  //             : () {},
+                  //         iconLink: showPlayer ? 'assets/cancelActive.png' : 'assets/cancelInactive.png',
+                  //       ),
+                  //       const SizedBox(width: 10),
+                  //       CommonElevatedButton(
+                  //         elevation: 0,
+                  //         hight: 48.0,
+                  //         width: 175.19,
+                  //         backgroundColor: showPlayer ? AppConstants.primaryColor : AppConstants.secondaryColor,
+                  //         textColor: AppConstants.whiteColor,
+                  //         fontSize: 15.0,
+                  //         text: 'Submit Recording',
+                  //         borderColor: showPlayer ? AppConstants.primaryColor : AppConstants.secondaryColor,
+                  //         fontFamily: AppConstants.fontFamilyRoboto,
+                  //         fontWeight: AppConstants.fontWeight500,
+                  //         onPressed: showPlayer
+                  //             ? () {
+                  //                 // submitRecoringDialog();
+                  //               }
+                  //             : () {},
+                  //         iconLink: 'assets/submit.png',
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
                   const SizedBox(height: 15),
                   const CommonTextField(
                     richText: 'Baptist Email Address',
@@ -247,90 +283,90 @@ class _MyHomePageState extends State<MyHomePage> {
                     labelText: '',
                   ),
                   const SizedBox(height: 15),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                    child: Row(
-                      children: [
-                        CommonElevatedButton(
-                          elevation: 0,
-                          hight: 48.0,
-                          width: 175.19,
-                          backgroundColor: AppConstants.whiteColor,
-                          textColor: !showPlayer ? AppConstants.primaryColor : AppConstants.secondaryColor,
-                          fontSize: 15.0,
-                          text: 'Cancel Recording',
-                          borderColor: !showPlayer ? AppConstants.primaryColor : AppConstants.secondaryColor,
-                          fontFamily: AppConstants.fontFamilyRoboto,
-                          fontWeight: AppConstants.fontWeight500,
-                          onPressed: !showPlayer
-                              ? () {
-                                  setState(() {
-                                    showPlayer = false;
-                                  });
-                                }
-                              : () {},
-                          iconLink: !showPlayer ? 'assets/cancelActive.png' : 'assets/cancelInactive.png',
-                        ),
-                        const SizedBox(width: 10),
-                        CommonElevatedButton(
-                          elevation: 0,
-                          hight: 48.0,
-                          width: 175.19,
-                          backgroundColor: !showPlayer ? AppConstants.primaryColor : AppConstants.secondaryColor,
-                          textColor: AppConstants.whiteColor,
-                          fontSize: 15.0,
-                          text: 'Submit Recording',
-                          borderColor: !showPlayer ? AppConstants.primaryColor : AppConstants.secondaryColor,
-                          fontFamily: AppConstants.fontFamilyRoboto,
-                          fontWeight: AppConstants.fontWeight500,
-                          onPressed: !showPlayer
-                              ? () {
-                                  // submitRecoringDialog();
-                                }
-                              : () {},
-                          iconLink: 'assets/submit.png',
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(height: 15),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 40.0),
-                    child: Row(
-                      children: [
-                        CommonElevatedButton(
-                          elevation: 0,
-                          hight: 48.0,
-                          width: 159.0,
-                          backgroundColor: AppConstants.whiteColor,
-                          textColor: AppConstants.primaryColor,
-                          fontSize: 16.0,
-                          text: 'Reset Filters',
-                          borderColor: AppConstants.primaryColor,
-                          fontFamily: AppConstants.fontFamilyRoboto,
-                          fontWeight: AppConstants.fontWeight500,
-                          onPressed: () {},
-                          iconLink: '',
-                        ),
-                        const SizedBox(width: 15),
-                        CommonElevatedButton(
-                          elevation: 0,
-                          hight: 48.0,
-                          width: 159.0,
-                          backgroundColor: AppConstants.primaryColor,
-                          textColor: AppConstants.whiteColor,
-                          fontSize: 16.0,
-                          text: 'Apply Filters',
-                          borderColor: AppConstants.primaryColor,
-                          fontFamily: AppConstants.fontFamilyRoboto,
-                          fontWeight: AppConstants.fontWeight500,
-                          onPressed: () {},
-                          iconLink: '',
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(height: 15),
+                  // Padding(
+                  //   padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                  //   child: Row(
+                  //     children: [
+                  //       CommonElevatedButton(
+                  //         elevation: 0,
+                  //         hight: 48.0,
+                  //         width: 175.19,
+                  //         backgroundColor: AppConstants.whiteColor,
+                  //         textColor: !showPlayer ? AppConstants.primaryColor : AppConstants.secondaryColor,
+                  //         fontSize: 15.0,
+                  //         text: 'Cancel Recording',
+                  //         borderColor: !showPlayer ? AppConstants.primaryColor : AppConstants.secondaryColor,
+                  //         fontFamily: AppConstants.fontFamilyRoboto,
+                  //         fontWeight: AppConstants.fontWeight500,
+                  //         onPressed: !showPlayer
+                  //             ? () {
+                  //                 setState(() {
+                  //                   showPlayer = false;
+                  //                 });
+                  //               }
+                  //             : () {},
+                  //         iconLink: !showPlayer ? 'assets/cancelActive.png' : 'assets/cancelInactive.png',
+                  //       ),
+                  //       const SizedBox(width: 10),
+                  //       CommonElevatedButton(
+                  //         elevation: 0,
+                  //         hight: 48.0,
+                  //         width: 175.19,
+                  //         backgroundColor: !showPlayer ? AppConstants.primaryColor : AppConstants.secondaryColor,
+                  //         textColor: AppConstants.whiteColor,
+                  //         fontSize: 15.0,
+                  //         text: 'Submit Recording',
+                  //         borderColor: !showPlayer ? AppConstants.primaryColor : AppConstants.secondaryColor,
+                  //         fontFamily: AppConstants.fontFamilyRoboto,
+                  //         fontWeight: AppConstants.fontWeight500,
+                  //         onPressed: !showPlayer
+                  //             ? () {
+                  //                 // submitRecoringDialog();
+                  //               }
+                  //             : () {},
+                  //         iconLink: 'assets/submit.png',
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
+                  // const SizedBox(height: 15),
+                  // Padding(
+                  //   padding: const EdgeInsets.symmetric(horizontal: 40.0),
+                  //   child: Row(
+                  //     children: [
+                  //       CommonElevatedButton(
+                  //         elevation: 0,
+                  //         hight: 48.0,
+                  //         width: 159.0,
+                  //         backgroundColor: AppConstants.whiteColor,
+                  //         textColor: AppConstants.primaryColor,
+                  //         fontSize: 16.0,
+                  //         text: 'Reset Filters',
+                  //         borderColor: AppConstants.primaryColor,
+                  //         fontFamily: AppConstants.fontFamilyRoboto,
+                  //         fontWeight: AppConstants.fontWeight500,
+                  //         onPressed: () {},
+                  //         iconLink: '',
+                  //       ),
+                  //       const SizedBox(width: 15),
+                  //       CommonElevatedButton(
+                  //         elevation: 0,
+                  //         hight: 48.0,
+                  //         width: 159.0,
+                  //         backgroundColor: AppConstants.primaryColor,
+                  //         textColor: AppConstants.whiteColor,
+                  //         fontSize: 16.0,
+                  //         text: 'Apply Filters',
+                  //         borderColor: AppConstants.primaryColor,
+                  //         fontFamily: AppConstants.fontFamilyRoboto,
+                  //         fontWeight: AppConstants.fontWeight500,
+                  //         onPressed: () {},
+                  //         iconLink: '',
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
+                  // const SizedBox(height: 15),
                   Column(
                     children: [
                       CommonElevatedButton(
