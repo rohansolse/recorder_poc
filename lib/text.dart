@@ -104,21 +104,26 @@ class PText extends StatelessWidget {
   final FontFamilyEnum fontFamily;
   final TextDecoration? textDecoration;
   final TextAlign? textAlign;
+  final bool richText;
+  final String? textSpan;
 
-  const PText(this.title,
-      {Key? key,
-      this.type = TextSize.base,
-      this.isOverflow = false,
-      this.color = AppColor.textPrimaryColor,
-      this.device = DeviceType.MOBILE,
-      this.weight = FontWeightEnum.medium,
-      this.isMaxLines = false,
-      this.maxLine = 3,
-      this.fontFamily = FontFamilyEnum.roboto,
-      this.textDecoration,
-      this.height,
-      this.textAlign})
-      : super(key: key);
+  const PText(
+    this.title, {
+    Key? key,
+    this.type = TextSize.base,
+    this.isOverflow = false,
+    this.color = AppColor.textPrimaryColor,
+    this.device = DeviceType.MOBILE,
+    this.weight = FontWeightEnum.medium,
+    this.isMaxLines = false,
+    this.maxLine = 3,
+    this.fontFamily = FontFamilyEnum.roboto,
+    this.textDecoration,
+    this.height,
+    this.textAlign,
+    this.richText = false,
+    this.textSpan,
+  }) : super(key: key);
 
   getFontFamily() {
     switch (fontFamily) {
@@ -133,20 +138,42 @@ class PText extends StatelessWidget {
   Widget build(BuildContext context) {
     SizeConfig.init(context);
 
-    return Text(
-      title,
-      overflow: isOverflow ? TextOverflow.ellipsis : null,
-      textScaleFactor: 1.0,
-      textAlign: textAlign,
-      maxLines: isMaxLines ? maxLine : null,
-      style: TextStyle(
-        height: height,
-        color: color,
-        fontFamily: getFontFamily(),
-        fontSize: SizeConfig.devicetype!.typeScale[type],
-        fontWeight: weight.value,
-        decoration: textDecoration ?? TextDecoration.none,
-      ),
-    );
+    return richText
+        ? RichText(
+            text: TextSpan(
+              text: title,
+              style: TextStyle(
+                color: AppColor.textPrimaryColor,
+                fontSize: SizeConfig.devicetype!.typeScale[type],
+                fontFamily: getFontFamily(),
+              ),
+              children: [
+                TextSpan(
+                  text: textSpan,
+                  style: TextStyle(
+                    color: AppColor.dialogTitle,
+                    fontSize: SizeConfig.devicetype!.typeScale[type],
+                    fontFamily: getFontFamily(),
+                    fontWeight: weight.value,
+                  ),
+                ),
+              ],
+            ),
+          )
+        : Text(
+            title,
+            overflow: isOverflow ? TextOverflow.ellipsis : null,
+            textScaleFactor: 1.0,
+            textAlign: textAlign,
+            maxLines: isMaxLines ? maxLine : null,
+            style: TextStyle(
+              height: height,
+              color: color,
+              fontFamily: getFontFamily(),
+              fontSize: SizeConfig.devicetype!.typeScale[type],
+              fontWeight: weight.value,
+              decoration: textDecoration ?? TextDecoration.none,
+            ),
+          );
   }
 }

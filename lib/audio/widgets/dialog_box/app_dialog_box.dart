@@ -97,26 +97,11 @@ class AppDialogBox extends StatelessWidget {
               ),
               if (richText)
                 Center(
-                  child: RichText(
-                    text: TextSpan(
-                      text: richtextTitle,
-                      style: const TextStyle(
-                        color: AppColor.textPrimaryColor,
-                        fontSize: AppDialogBoxTheme.richTextFontSize,
-                        fontFamily: AppDialogBoxTheme.richTextFontFamily,
-                      ),
-                      children: [
-                        TextSpan(
-                          text: textSpan,
-                          style: const TextStyle(
-                            color: AppColor.dialogTitle,
-                            fontSize: AppDialogBoxTheme.richTextFontSize,
-                            fontFamily: AppDialogBoxTheme.richTextFontFamily,
-                            fontWeight: AppDialogBoxTheme.richTextFontWeight,
-                          ),
-                        ),
-                      ],
-                    ),
+                  child: PText(
+                    'This will generate a ',
+                    type: TextSize.PBase,
+                    richText: richText,
+                    textSpan: 'Visit Summary Document',
                   ),
                 ),
               const SizedBox(height: 30),
