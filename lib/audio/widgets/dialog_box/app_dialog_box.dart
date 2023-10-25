@@ -98,10 +98,10 @@ class AppDialogBox extends StatelessWidget {
               if (richText)
                 Center(
                   child: PText(
-                    'This will generate a ',
+                    richtextTitle ?? '',
                     type: TextSize.PBase,
                     richText: richText,
-                    textSpan: 'Visit Summary Document',
+                    textSpan: textSpan,
                   ),
                 ),
               const SizedBox(height: 30),
