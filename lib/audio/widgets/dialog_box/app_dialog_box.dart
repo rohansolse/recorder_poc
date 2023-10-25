@@ -8,6 +8,9 @@ class AppDialogBox extends StatelessWidget {
   final String title;
   final String text;
   final String icon;
+  final bool richText;
+  final String? richtextTitle;
+  final String? textSpan;
   final String approveButtonText;
   final String cancelButtonText;
   final Function() onTap;
@@ -19,6 +22,9 @@ class AppDialogBox extends StatelessWidget {
     required this.approveButtonText,
     required this.cancelButtonText,
     required this.onTap,
+    required this.richText,
+    this.richtextTitle,
+    this.textSpan,
   });
 
   static void showAppDialogBox({
@@ -26,6 +32,9 @@ class AppDialogBox extends StatelessWidget {
     required String title,
     required String text,
     required String icon,
+    required bool richText,
+    String? richtextTitle,
+    String? textSpan,
     required String approveButtonText,
     required String cancelButtonText,
     required Function() onTap,
@@ -38,6 +47,9 @@ class AppDialogBox extends StatelessWidget {
           text: text,
           icon: icon,
           onTap: onTap,
+          richtextTitle: richtextTitle,
+          textSpan: textSpan,
+          richText: richText,
           approveButtonText: approveButtonText,
           cancelButtonText: cancelButtonText,
         );
@@ -83,6 +95,30 @@ class AppDialogBox extends StatelessWidget {
                   fontFamily: FontFamilyEnum.roboto,
                 ),
               ),
+              if (richText)
+                Center(
+                  child: RichText(
+                    text: const TextSpan(
+                      text: 'This will generate a ',
+                      style: TextStyle(
+                        color: AppColor.textPrimaryColor,
+                        fontSize: 15,
+                        fontFamily: 'Roboto',
+                      ),
+                      children: [
+                        TextSpan(
+                          text: 'Visit Summary Document',
+                          style: TextStyle(
+                            color: AppColor.dialogTitle,
+                            fontSize: 15,
+                            fontFamily: 'Roboto',
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
               const SizedBox(height: 30),
               PrimaryButton(
                 title: approveButtonText,

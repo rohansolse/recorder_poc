@@ -123,27 +123,31 @@ class _MyHomePageState extends State<MyHomePage> {
                         onTap: () {
                           Navigator.pop(context);
                         },
+                        richText: true,
+                        richtextTitle: '',
+                        textSpan: '',
                       );
                     },
                     child: const Text('Show 1st Dialog'),
                   ),
-
                   const SizedBox(height: 15),
                   ElevatedButton(
-                      onPressed: () {
-                        AppDialogBox.showAppDialogBox(
-                          context: context,
-                          icon: 'assets/approve.png',
-                          title: 'Approve Summary',
-                          text: 'Score the summary and decide whether you approve or reject it.',
-                          approveButtonText: 'Approve Summary',
-                          cancelButtonText: 'Reject Summary',
-                          onTap: () {
-                            Navigator.pop(context);
-                          },
-                        );
-                      },
-                      child: const Text('Show 2nd Dialog')),
+                    onPressed: () {
+                      AppDialogBox.showAppDialogBox(
+                        context: context,
+                        icon: 'assets/approve.png',
+                        title: 'Approve Summary',
+                        text: 'Score the summary and decide whether you approve or reject it.',
+                        approveButtonText: 'Approve Summary',
+                        cancelButtonText: 'Reject Summary',
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
+                        richText: false,
+                      );
+                    },
+                    child: const Text('Show 2nd Dialog'),
+                  ),
                   const SizedBox(height: 15),
                   ElevatedButton(
                     onPressed: () {
